@@ -16,5 +16,9 @@ class RolSeeder extends Seeder
             'name' => 'administrador',
             'description' => 'Acceso completo al sistema'
         ]);
+        rol::create([
+            'name' => 'Usuario',
+            'description' => 'Acceso limitado al sistema'
+        ]);
     }
 }
