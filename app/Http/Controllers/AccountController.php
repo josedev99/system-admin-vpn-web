@@ -40,7 +40,8 @@ class AccountController extends Controller
             get();
         $resp_data = $getUserAll[0];
         //Create user a server ssh
-        $this->command_ssh(get_days(),$resp_data->ip,'hive-vpn.tk-'.$data['user'],$data['passwd']);
+        //Create user a server ssh
+        $this->command_ssh(get_days(),$resp_data->ip,'hive-vpn.tk-'.session('user'), session('passwd'),$resp_data->vps_user,$resp_data->vps_passwd);
         
         return view('view_account',compact('resp_data'));
         
@@ -52,9 +53,9 @@ class AccountController extends Controller
             get();
         return view('panel.ssh.index',compact('getUsersAll'));
     }
-    public function command_ssh($date,$ip,$user,$passwd){
+    public function command_ssh($date,$ip,$user,$passwd,$vps_user,$vps_passwd){
         $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
         
-        $exec = ssh2_exec(connect($ip,'vps-2021-hive',22), $comand);
+        $exec = ssh2_exec(connect($ip,$vps_user,$vps_passwd,22), $comand);
     }
 }
