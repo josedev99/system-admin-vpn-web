@@ -1,0 +1,39 @@
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><i class="app-menu__icon fa fa-user fa-3x mr-3"></i>
+        <div>
+          <p class="app-sidebar__user-name">{{ Auth::user()->name }}</p>
+          <p class="app-sidebar__user-designation">
+              @if (Auth::user()->rol_id == 1)
+                 {{__('Administrador')}}
+            @else
+                {{ __('Usuario') }}
+              @endif
+          </p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item active" href="{{ route('panel') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Incio</span></a></li>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Cuentas SSH</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{{ route('showSSH') }}"><i class="icon fa fa-circle-o"></i>SSH activas</a></li>
+            <li><a class="treeview-item" href="bootstrap-components.html"><i class="icon fa fa-circle-o"></i>SSH Crear</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Server</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a class="treeview-item" href="{{ route('addServer') }}"><i class="icon fa fa-circle-o"></i>Crear</a></li>
+              <li><a class="treeview-item" href="{{ route('server.show') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>
+            </ul>
+          </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Ganancias</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+              <li><a class="treeview-item" href="{{ route('sales.show') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>
+            </ul>
+          </li>
+
+        <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Documentación</span></a></li>
+      </ul>
+    </aside>

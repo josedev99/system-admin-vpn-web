@@ -1,0 +1,126 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+/*GENERAL STYLE*/
+.btn{
+    padding: 11px 22px;
+    border-radius: 20px;
+}
+.title-2{
+    color: #0f53e7;
+}
+/*STYLE HEADER SECTION*/
+
+.header__section{
+    background: #0f53e7;
+    height: 80vh;
+    width: 100%;
+}
+
+.header__btn{
+    color: #fff;
+}
+.header__img{
+    position: relative;
+    height: 300px;
+}
+
+/* STYLE SECTION SERVICE*/
+
+.section__services{
+    background: #f1f1f1;
+    padding: 4rem 0px;
+}
+.services__icon{
+    margin: 0px 20px;
+}
+.services__info{
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+/*STYLE SECTION INFORMATION*/
+.section__information{
+    padding: 4rem 0px;
+}
+.card-circle{
+    border-radius: 50%;
+    background: #0f53e7;
+    height: 80px;
+    width: 80px;
+}
+
+/*STYLE FOOTER*/
+
+.footer__content{
+    background: #1f2d41;
+    padding: 4rem 0px;
+    color: #b1b1b1;
+}
+.footer__text{
+    font-size: 1rem;
+}
+.footer__list{
+    text-align: left;
+}
+.footer__list li{
+    list-style: none;
+    font-size: 1rem;
+}
+.footer__list li i{
+    padding-right: 10px;
+}
+/* STYLE SERVIDORES*/
+.server__content{
+    padding: 4rem 0px;
+    background: #f1f1f1;
+}
+.card__server{
+    height: 100%;
+    width: 250px;
+    border-radius: 5px;
+    transition: all ease 0.5s;
+    padding: 10px 20px;
+}
+.card__server:hover{
+    box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+}
+.card__type-server{
+    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.card__type-server p{
+    margin: 0px;
+}
+.card__title{
+    font-size: 1rem;
+}
+.card__icon{
+    text-align: center;
+
+}
+
+.card__info-c{
+    background: green;
+    border-radius: 10px;
+    padding: 3px 5px;
+    color: #fff;
+    display: inline-block;
+}
+
+.card-link:hover{
+    box-shadow: 0px 0px 5px rgba(0,0,0,.2);
+}
+/*STYLE BANNER DE SERVER PAGE*/
+.banner__server{
+    background: #0f53e7;
+    height: 50vh;
+    width: 100%;
+}
