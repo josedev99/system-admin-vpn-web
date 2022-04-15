@@ -164,7 +164,7 @@ class PaymentController extends Controller
         $data = request()->validate([
                 'user' => "required",
                 'passwd' => "required",
-                
+                'g-recaptcha-response' => 'recaptcha'
         ]);
         return $data;
     }
