@@ -2,7 +2,7 @@
 @section('content')
     <div class="banner__server">
         <div class="header__section-transparent d-flex flex-column justify-content-center align-items-center">
-            <h1 class="text-center py-3 title-1 text-light">SSH WebSocket | FREE Y PREMIUM</h1>
+            <h1 class="text-center py-3 title-1 text-light">SSH WebSocket VIP/FREE</h1>
             <h3 class="text-success">Lista de servidores</h3>
         </div>
     </div>
