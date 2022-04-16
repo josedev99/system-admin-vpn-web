@@ -4,7 +4,7 @@
 @include('panel.partials.alert')
 <div class="tile">
     <h3 class="tile-title">Server</h3>
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered dataTable no-footer table-responsive">
       <thead>
         <tr>
           <th>#</th>

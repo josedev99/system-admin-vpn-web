@@ -5,7 +5,7 @@
                 <h3 class="text-center">HIVE VPN</h3>
                 <p class="footer__text">Somos los mejores proveedores de cuentas SSH para tus VPN, con acceso a videojuegos y mucho mas</p>
                 <div class="footer__redes">
-                    <a href=""><i class="fa-brands fa-telegram fa-2x text-light"></i></a>
+                    <a href="https://t.me/noscriptsh"><i class="fa-brands fa-telegram fa-2x text-light"></i></a>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-4">
