@@ -17,7 +17,7 @@
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Cuentas SSH</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{{ route('showSSH') }}"><i class="icon fa fa-circle-o"></i>SSH activas</a></li>
-            <li><a class="treeview-item" href="bootstrap-components.html"><i class="icon fa fa-circle-o"></i>SSH Crear</a></li>
+            
           </ul>
         </li>
         @if (Auth::user()->rol_id == 1)

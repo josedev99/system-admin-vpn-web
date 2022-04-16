@@ -1,5 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 
 // Variables
 @import 'variables';
@@ -7,17 +9,54 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 /*GENERAL STYLE*/
+//FONTS
+h3{
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500;
+}
+a,p{
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+}
 .btn{
     padding: 11px 22px;
     border-radius: 20px;
 }
+.title-1{
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700;
+}
 .title-2{
+    font-family: 'Poppins', sans-serif !important;
     color: #0f53e7;
+    font-weight: 700;
+}
+//STYLE BADGE
+.badge__vip{
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    color: #f1f1f1;
+    padding: 2px;
+    border-radius: 50%;
+    background: #f8aa02;
+}
+.badge__free{
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    color: #f1f1f1;
+    padding: 2px;
+    border-radius: 50%;
+    background: #0f53e7;
 }
 /*STYLE HEADER SECTION*/
 
 .header__section{
-    background: #0f53e7;
+    background: url('https://res.cloudinary.com/ddfsqcy12/image/upload/v1650087181/cloud-g01e874902_1280_uiotqg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:top right;
     height: 80vh;
     width: 100%;
 }
@@ -59,7 +98,7 @@
 
 .footer__content{
     background: #1f2d41;
-    padding: 4rem 0px;
+    padding: 4rem 0px 2rem 0px;
     color: #b1b1b1;
 }
 .footer__text{
@@ -120,7 +159,42 @@
 }
 /*STYLE BANNER DE SERVER PAGE*/
 .banner__server{
-    background: #0f53e7;
+    background: url('https://res.cloudinary.com/ddfsqcy12/image/upload/v1650085896/server-g83a9e2550_1280_zlq0ik.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 50vh;
     width: 100%;
+}
+.header__section-transparent{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(29, 48, 88, 0.7);
+}
+/*STYLE INFO */
+.content__number{
+    padding: 4rem 0px;
+    background: #f2f5f7;
+}
+.content__number-title{
+    font-size: 2.3rem;
+}
+.cirle__info{
+    background: #1a5a89;
+    border-radius: 5%;
+    height: 100px;
+    width: 200px;
+    box-shadow: 0 32px 0 -24px hsl(0deg 0% 100% / 13%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cirle__info h3{
+    color: #f8aa02;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.cirle__info h4{
+    color: #f1f1f1;
 }

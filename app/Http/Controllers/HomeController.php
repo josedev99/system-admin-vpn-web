@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\account;
 use App\server;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $getServersAll = server::all()->count();
+        $getAccountsAll = account::all()->count();
+        
+        return view('home',compact('getServersAll','getAccountsAll'));
     }
     public function accounts()
     {

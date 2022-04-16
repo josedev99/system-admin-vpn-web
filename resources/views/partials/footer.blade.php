@@ -24,5 +24,7 @@
                 </ul>
             </div>
         </div>
+        <hr>
+        <h5>Powered by hive-vpn.tk</h5>
     </div>
 </footer>

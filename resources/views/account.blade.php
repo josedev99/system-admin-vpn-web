@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <div class="banner__server d-flex flex-column justify-content-center align-items-center">
-        <h1 class="text-center py-3 text-light">SSH de 3 Días Server</h1>
-        <h3 class="text-info">Lista de servidores</h3>
+    <div class="banner__server">
+        <div class="header__section-transparent d-flex flex-column justify-content-center align-items-center">
+            <h1 class="text-center py-3 title-1 text-light">SSH WebSocket | FREE Y PREMIUM</h1>
+            <h3 class="text-success">Lista de servidores</h3>
+        </div>
     </div>
     <div class="container py-5">
         <div class="row">
@@ -11,7 +13,7 @@
             <div class="col-12 col-sm-12 col-md-3 mb-5">
                 <div class="card card-link">
                 <div class="card-body p-2">
-                <h6 class="text-center">SSH SSL/TLS</h6><hr>
+                <h6 class="text-center">SSH SSL/TLS @if ($item->type == "premium") <span class="badge__vip">vip</span> @else <span class="badge__free">free</span> @endif</h6><hr>
                 <h4 class="text-center">{{ $item->name }}</h4>
                 <table class="text-left col-lg-12 col-12 small">
                 <tbody><tr><td>Domain</td><td>: <b>{{ $item->domain }}</b></td></tr>

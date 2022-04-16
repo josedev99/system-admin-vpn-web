@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6">
                 
-                <h1 class="my-3 text-light">Obtener cuentas SSH premium y gratis, para accesos a VPN</h1>
+                <h1 class="my-3 text-light title-1">Obtener cuentas SSH premium y gratis, para accesos a VPN</h1>
                 <h3 class="mb-3 text-info">Conexión rápida y acceso a páginas bloqueadas.</h3>
-                <button class="btn btn-outline-info header__btn">COMENZAR!!</button>
+                <a href="{{ route('accounts') }}" class="btn btn-outline-info header__btn">COMENZAR!!</a>
                 
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center">
@@ -20,7 +20,7 @@
 
 <section class="section__services">
     <div class="container">
-        <h2 class="text-center title-2">Lo que tenemos para tí!!</h2>
+        <h2 class="text-center title-2 mb-2">Lo que tenemos para tí!!</h2>
         <p class="text-dark services__info pb-4">Nos enfocamos en traer los mejores servicios para las siguientes cuentas!!!</p>
             <div class="col-12 col-sm-12 col-md-12 d-flex justify-content-center align-items-center">
                 <div class="services__icon">
@@ -80,10 +80,10 @@
 
 <section class="server__content">
     <div class="container">
-        <h2 class="text-center">Algunos de nuestros servicios premium</h2>
+        <h2 class="text-center title-2">Prueba nuestros servicios</h2>
 
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-md-end justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center my-3">
                 <div class="card__server">
                     <div class="card__type-server">
                         <p class="text-center text-dark">WEBSOCKET</p>
@@ -92,7 +92,7 @@
                         <h2 class="text-center my-2">Estados Unidos</h2>
                     </div>
                     <div class="card__icon">
-                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1644858230/fr_kcvl6w.png" alt="">
+                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650086002/ca_tppum6.png" alt="flag">
                     </div>
                     <div class="card-body text-center">
                         <span class="card__info-c my-3">0 servidores</span>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-md-start justify-content-center">
+            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center my-3">
                 <div class="card__server">
                     <div class="card__type-server">
                         <p class="text-center text-dark">WEBSOCKET</p>
@@ -109,7 +109,7 @@
                         <h2 class="text-center my-2">Estados Unidos</h2>
                     </div>
                     <div class="card__icon">
-                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1644858230/fr_kcvl6w.png" alt="">
+                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650085922/us_k6yhiv.png" alt="flag">
                     </div>
                     <div class="card-body text-center">
                         <span class="card__info-c my-3">2 servidores</span>
@@ -117,9 +117,36 @@
                     </div>
                 </div>
             </div>
+
         </div>
+        
     </div>
 
+</section>
+
+<section class="content__number">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center mb-3">
+                <div class="cirle__info server">
+                    <h3>{{ $getServersAll }}</h3>
+                    <h4>SERVER</h4>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center mb-3">
+                <div class="cirle__info server">
+                    <h3>{{ $getAccountsAll }}</h3>
+                    <h4>ACCOUNTS</h4>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center">
+                <div class="cirle__info server">
+                    <h3>10</h3>
+                    <h4>TODAY</h4>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 @endsection
