@@ -122,7 +122,7 @@ class PaymentController extends Controller
         }
         //PROCESS ACCOUNT CREATED
             
-            $validateUser = account::where('user','=','hive-vpn.tk-'.session('user'))->get();
+            $validateUser = account::where('user','=',session('user'))->get();
             if(count($validateUser) > 0){
                 return redirect()->back()->with('status','El usuario ya existe!');
             }
@@ -131,7 +131,7 @@ class PaymentController extends Controller
             $fecha_actual = date("Y-m-d");   
             
             $resp = account::create([
-                'user' => 'hive-vpn.tk-'.session('user'),
+                'user' => session('user'),
                 'passwd' => session('passwd'),
                 'created' => $fecha_actual,
                 'expire' => get_days(),
@@ -154,9 +154,8 @@ class PaymentController extends Controller
                 'account_id' => $resp_data->id
             ]);
             //Create user a server ssh
-            $this->command_ssh(get_days(),$resp_data->ip,'hive-vpn.tk-'.session('user'), session('passwd'),$resp_data->vps_user,$resp_data->vps_passwd);
-
-
+            $this->command_ssh(session('user'), session('passwd'),get_days());
+            
             return view('view_account',compact('resp_data'));
             
     }
@@ -168,9 +167,21 @@ class PaymentController extends Controller
         ]);
         return $data;
     }
-    public function command_ssh($date,$ip,$user,$passwd,$vps_user,$vps_passwd){
+    public function command_ssh($user,$passwd,$date){
         $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
+
+        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
+        stream_set_blocking( $stream, true );
+ 
+        $data = "";
         
-        $exec = ssh2_exec(connect($ip,$vps_user,$vps_passwd,22), $comand);
+        while( $buf = fread($stream,4096) ){
+        
+        $data .= $buf;
+        //Output uuid
+        echo $buf;
+        
+        } 
+        fclose($stream);
     }
 }

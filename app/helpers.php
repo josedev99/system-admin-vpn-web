@@ -9,7 +9,7 @@ function get_days(){
     return $validFecha;
 }
 
-function connect($host,$user,$passwd,$port){
+function connect($host ="",$user = "",$passwd = "",$port = ""){
     //Validation function ssh
     if (!function_exists('ssh2_connect')) {
         die('No existe la funcion ssh2_connect.'); 

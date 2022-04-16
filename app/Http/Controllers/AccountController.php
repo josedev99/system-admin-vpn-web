@@ -40,11 +40,10 @@ class AccountController extends Controller
             get();
         $resp_data = $getUserAll[0];
         //Create user a server ssh
-        //Create user a server ssh
-        $this->command_ssh(get_days(),$resp_data->ip,'hive-vpn.tk-'.session('user'), session('passwd'),$resp_data->vps_user,$resp_data->vps_passwd);
+        
+        $this->command_ssh($resp->user, $resp->passwd,get_days());
         
         return view('view_account',compact('resp_data'));
-        
     }
     public function showSSH(){
         $getUsersAll = DB::table('servers')->
@@ -53,9 +52,21 @@ class AccountController extends Controller
             get();
         return view('panel.ssh.index',compact('getUsersAll'));
     }
-    public function command_ssh($date,$ip,$user,$passwd,$vps_user,$vps_passwd){
+    public function command_ssh($user,$passwd,$date){
         $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
+
+        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
+        stream_set_blocking( $stream, true );
+ 
+        $data = "";
         
-        $exec = ssh2_exec(connect($ip,$vps_user,$vps_passwd,22), $comand);
+        while( $buf = fread($stream,4096) ){
+        
+        $data .= $buf;
+        //Output uuid
+        echo $buf;
+        
+        } 
+        fclose($stream);
     }
 }

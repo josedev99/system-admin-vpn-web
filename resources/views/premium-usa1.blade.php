@@ -36,15 +36,18 @@
                             {!! htmlFormSnippet() !!}
                             @error('g-recaptcha-response') <span class="text-danger">verificaión fallida</span> @enderror
                         </div>
-                        
-                        @auth
-                        @if ($server[0]->type == "premium")
-                        
                         {{ session([
                             'price' => $server[0]->price,
                             'server_id' => request()->id,
-                            'days' => $server[0]->days
+                            'days' => $server[0]->days,
+                            'host' => $server[0]->ip,
+                            'vps_user' => $server[0]->vps_user,
+                            'vps_passwd' => $server[0]->vps_passwd
                         ]) }}
+                    
+                        @auth
+                        @if ($server[0]->type == "premium")
+                        
                         
                             <input name="amount" placeholder="Amount" value="{{ $server[0]->price }}" type="hidden">
                             
