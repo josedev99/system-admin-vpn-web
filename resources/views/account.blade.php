@@ -25,8 +25,11 @@
                 <tr><td>SSH WebSocket</td><td>: <b>80</b></td></tr>
                 </tbody></table>
                 <hr>
-                <p class="card-text small">
-                Conexiones: <i class="badge badge-success"><b>{{ $item->limit }}</b></i> </p>
+                <div class="d-flex justify-content-between">
+                    <p class="card-text small">Conexiones: <i class="badge badge-success"><b>{{ $item->limit }}</b></i> </p>
+                    <h5 class="text-dark">$@if ( $item->type == "premium" ) {{ $item->price }} @else 0.00 @endif
+                    </h5>
+                </div>
                 </div>
                 <div class="card-footer bg-transparent pt-0 pb-3">
                 <a class="d-block btn btn-primary btn-block mt-2 rounded-pill" href="{{ route('ssh-create',$item) }}">CREAR</a>
