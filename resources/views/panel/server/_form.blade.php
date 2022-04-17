@@ -2,24 +2,28 @@
     <div class="col-lg-6">
         <div class="form-group">
           <label for="exampleInputEmail1">Nombre</label>
-          <input class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name',$getServer->name) }}" type="txt" placeholder="Enter name"><small class="form-text text-muted" ></small>
+          <input class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name',$getServer->name) }}" type="txt" placeholder="Ejem: Estados Unidos"><small class="form-text text-muted" ></small>
         </div>
 
         <div class="form-group">
           <label for="payload">Payload</label>
-          <textarea name="payload" class="form-control @error('payload') is-invalid @enderror" rows="3">{{ old('payload',$getServer->payload) }}
-            </textarea>
+          <textarea name="payload" class="form-control @error('payload') is-invalid @enderror" rows="3">{{ old('payload',$getServer->payload) }}</textarea>
         </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">IP</label>
-          <input class="form-control @error('ip') is-invalid @enderror" name="ip" value="{{ old('ip',$getServer->ip) }}" type="txt" placeholder="Enter IP"><small class="form-text text-muted" ></small>
+          <input class="form-control @error('ip') is-invalid @enderror" name="ip" value="{{ old('ip',$getServer->ip) }}" type="txt" placeholder="Enter IP: 192.68.1.1"><small class="form-text text-muted" ></small>
         </div>
 
         <div class="form-group">
           <label for="country">Pais</label>
           <select name="country" class="form-control" required>
+            
+            @if($getServer->country != "")
+            <option value="{{ $getServer->country }}" >{{ $getServer->country }}</option>
+            @else
             <option value="" id="AF">Elegir un pais</option>
+            @endif
             <option value="Afganistán" id="AF">Afganistán</option>
             <option value="Albania" id="AL">Albania</option>
             <option value="Alemania" id="DE">Alemania</option>
@@ -122,17 +126,22 @@
   
             <div class="form-group">
               <label for="days">Días de actividad</label>
-              <input class="form-control @error('days') is-invalid @enderror" name="days" type="number" value="{{ old('days',$getServer->days) }}" placeholder="Enter act"><small class="form-text text-muted" ></small>
+              <input class="form-control @error('days') is-invalid @enderror" name="days" type="number" value="{{ old('days',$getServer->days) }}" placeholder="Duración de cuenta"><small class="form-text text-muted" ></small>
             </div>
 
             <div class="form-group">
               <label for="days">Precio</label>
-              <input class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price',$getServer->price) }}" type="number" placeholder="Enter act"><small class="form-text text-muted" ></small>
+              <input class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price',$getServer->price) }}" type="number" placeholder="2 o 4"><small class="form-text text-muted" ></small>
             </div>
   
             <div class="form-group">
               <label for="exampleSelect1">Tipo</label>
-              <select class="form-control @error('type') is-invalid @enderror" name="type" id="type">
+              <select class="form-control @error('type') is-invalid @enderror" name="type" id="type" required>
+                @if($getServer->type != "")
+                <option value="{{ $getServer->type }}">Account {{ $getServer->type }}</option>
+                @else
+                <option value="">Tipo de cuenta</option>  
+                @endif
                 <option value="free">Account free</option>
                 <option value="premium">Account Premium</option>
               </select>
@@ -140,7 +149,7 @@
             
             <div class="form-group">
               <label for="days">Conexiones</label>
-              <input class="form-control @error('limit') is-invalid @enderror" name="limit" value="{{ old('limit',$getServer->limit) }}" type="txt" placeholder="Enter limit conecct"><small class="form-text text-muted" ></small>
+              <input class="form-control @error('limit') is-invalid @enderror" name="limit" value="{{ old('limit',$getServer->limit) }}" type="txt" placeholder="Limite de conexión 5"><small class="form-text text-muted" ></small>
             </div>
             <div class="form-group">
               <label for="days">Dominio</label>

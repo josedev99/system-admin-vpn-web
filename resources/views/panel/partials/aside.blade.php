@@ -32,6 +32,12 @@
                 <li><a class="treeview-item" href="{{ route('sales.show') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>
               </ul>
             </li>
+          
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a class="treeview-item" href="{{ route('user.index') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>
+              </ul>
+            </li>
         @endif
 
         <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Documentación</span></a></li>

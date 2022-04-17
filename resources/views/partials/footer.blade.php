@@ -5,7 +5,13 @@
                 <h3 class="text-center">HIVE VPN</h3>
                 <p class="footer__text">Somos los mejores proveedores de cuentas SSH para tus VPN, con acceso a videojuegos y mucho mas</p>
                 <div class="footer__redes">
-                    <a href="https://t.me/noscriptsh"><i class="fa-brands fa-telegram fa-2x text-light"></i></a>
+                    Mi telegram personal: <a href="https://t.me/noscriptsh"><i class="fa-brands fa-telegram fa-2x text-light"></i></a>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>Descarga Blessing:</h4>
+                    <a href="https://play.google.com/store/apps/details?id=live.blessing.free">
+                        <img height="50" src="{{ asset('images/publicidad/blessing.png') }}" alt="">
+                    </a>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-4">

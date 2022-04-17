@@ -36,3 +36,10 @@ Route::get('/panel/cuentas-ssh','AccountController@showSSH')->name('showSSH');
 Route::view('/checkout', 'home');
 Route::post('/checkout', 'PaymentController@createPayment')->name('create-payment');
 Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment');
+
+//Rutas de usuario
+Route::get('/panel/usuarios','UsersController@index')->name('user.index');
+
+Route::get('/panel/usuarios/{user}','UsersController@edit')->name('user.edit');
+Route::put('/panel/usuarios/{user}','UsersController@update')->name('user.update');
+Route::delete('/panel/usuarios/{user}','UsersController@destroy')->name('user.destroy');
