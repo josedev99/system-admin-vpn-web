@@ -2,6 +2,7 @@
 
 use App\server;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ServerSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class ServerSeeder extends Seeder
      */
     public function run()
     {
+        
         server::create([
             'name' => 'Estados Unidos',
             'payload' => 'GET shi://sni.cloudflaressl.com HTTP/1.1[crlf]Host: vip1.hivevpn.tk[crlf]Upgrade: websocket[crlf][crlf]',
@@ -24,7 +26,8 @@ class ServerSeeder extends Seeder
             'limit' => 50,
             'domain' => 'vip1.hivevpn.tk',
             'vps_user' => 'root',
-            'vps_passwd' => 'vps-2021-hive'
+            'vps_passwd' => 'vps-2021-hive',
+            'user_id' => 1
         ]);
         server::create([
             'name' => 'Estados Unidos',
@@ -38,7 +41,8 @@ class ServerSeeder extends Seeder
             'limit' => 100,
             'domain' => 'usa1.vip-cloud.tk',
             'vps_user' => 'root',
-            'vps_passwd' => 'vps-2021-hive'
+            'vps_passwd' => 'vps-2021-hive',
+            'user_id' => 1
         ]);
         server::create([
             'name' => 'Estados Unidos',
@@ -52,7 +56,8 @@ class ServerSeeder extends Seeder
             'limit' => 50,
             'domain' => 'sf.vpn-internet.tk',
             'vps_user' => 'root',
-            'vps_passwd' => 'vps-2021-hive'
+            'vps_passwd' => 'vps-2021-hive',
+            'user_id' => 1
         ]);
     }
 }

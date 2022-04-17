@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\server;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PanelController extends Controller
@@ -33,6 +34,8 @@ class PanelController extends Controller
             'vps_user' => 'required',
             'vps_passwd' => 'required'
         ]);
+        //ID USERS AUTENTICATED
+        $data['user_id'] = Auth::user()->id;
         server::create($data);
         return redirect()->back()->with('status','Agregado satisfactoriamente');
     }

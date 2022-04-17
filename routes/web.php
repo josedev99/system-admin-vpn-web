@@ -9,7 +9,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::get('/cuentas-ssh', 'HomeController@accounts')->name('accounts');
+Route::get('/cuentas-ssh/{country?}', 'HomeController@accounts')->name('accounts');
 Route::get('/ssh-websocket/{id}', 'HomeController@premiumUsa1')->name('ssh-create');
 ROute::post('ssh-websocket/{id}','AccountController@WS_USA1')->name('ws_prem_usa1');
 

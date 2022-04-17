@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\server;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServerController extends Controller
 {
@@ -31,7 +32,8 @@ class ServerController extends Controller
             'vps_user' => 'required',
             'vps_passwd' => 'required'
         ]);
-
+        //ID USERS AUTENTICATED
+        $data['user_id'] = Auth::user()->id;
         $id->update($data);
         return redirect()->back()->with('status','Servidor editado!!');
     } 

@@ -9,7 +9,8 @@
     <div class="container py-5">
         <div class="row">
             @foreach ($data as $item)
-            
+            @if ($item->country == request('country'))
+                
             <div class="col-12 col-sm-12 col-md-3 mb-5">
                 <div class="card card-link">
                 <div class="card-body p-2">
@@ -36,7 +37,10 @@
                 </div>
                 </div>
             </div>
+            
+            @endif
             @endforeach
+            
         </div>
     </div>
 @endsection

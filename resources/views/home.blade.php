@@ -89,14 +89,14 @@
                         <p class="text-center text-dark">WEBSOCKET</p>
                     </div>
                     <div class="card__title">
-                        <h2 class="text-center my-2">Estados Unidos</h2>
+                        <h2 class="text-center my-2">Brazil</h2>
                     </div>
                     <div class="card__icon">
-                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650086002/ca_tppum6.png" alt="flag">
+                        <img height="50" src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650208378/brazil_qnyuxs.png" alt="flag">
                     </div>
                     <div class="card-body text-center">
-                        <span class="card__info-c my-3">0 servidores</span>
-                        <a class="btn btn-outline-primary" href="">CREAR SERVER</a>
+                        <span class="card__info-c my-3">1 servidores</span>
+                        <a class="btn btn-outline-primary" href="{{ route('accounts','Brasil') }}">CREAR SERVER</a>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,25 @@
                     </div>
                     <div class="card-body text-center">
                         <span class="card__info-c my-3">2 servidores</span>
-                        <a class="btn btn-outline-primary" href="{{ route('accounts') }}">CREAR SERVER</a>
+                        <a class="btn btn-outline-primary" href="{{ route('accounts','estados-unidos') }}">CREAR SERVER</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center my-3">
+                <div class="card__server">
+                    <div class="card__type-server">
+                        <p class="text-center text-dark">WEBSOCKET</p>
+                    </div>
+                    <div class="card__title">
+                        <h2 class="text-center my-2">Canadá</h2>
+                    </div>
+                    <div class="card__icon">
+                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650086002/ca_tppum6.png" alt="flag">
+                    </div>
+                    <div class="card-body text-center">
+                        <span class="card__info-c my-3">1 servidores</span>
+                        <a class="btn btn-outline-primary" href="{{ route('accounts','Canada') }}">CREAR SERVER</a>
                     </div>
                 </div>
             </div>

@@ -18,6 +18,7 @@ class server extends Model
         'limit',
         'domain',
         'vps_user',
-        'vps_passwd'
+        'vps_passwd',
+        'user_id'
     ];
 }
