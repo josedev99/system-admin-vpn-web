@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class PanelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','roles:1'])->except('index');
+    }
     public function index(){
         $numUser = DB::table('servers')->
             join('accounts','servers.id','=','accounts.server_id')->

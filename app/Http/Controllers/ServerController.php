@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ServerController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('roles:1');
+    }
     //Lista todos los servers
     public function show(){
         $getServerAll = server::all();

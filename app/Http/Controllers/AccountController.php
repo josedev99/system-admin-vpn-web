@@ -48,7 +48,7 @@ class AccountController extends Controller
     public function showSSH(){
         $getUsersAll = DB::table('servers')->
             join('accounts','servers.id','=','accounts.server_id')->
-            where('accounts.user_id',auth()->user()->id)->
+            where('accounts.user_id',auth()->user()->id)->orderBy('accounts.id','desc')->
             get();
         return view('panel.ssh.index',compact('getUsersAll'));
     }
