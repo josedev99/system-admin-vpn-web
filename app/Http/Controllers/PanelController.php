@@ -11,7 +11,7 @@ class PanelController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth','roles:1'])->except('index');
+        $this->middleware(['auth','roles:1']);
     }
     public function index(){
         $numUser = DB::table('servers')->
