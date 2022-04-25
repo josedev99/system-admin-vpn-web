@@ -44,6 +44,6 @@ class PanelController extends Controller
         //ID USERS AUTENTICATED
         $data['user_id'] = Auth::user()->id;
         server::create($data);
-        return redirect()->back()->with('status','Agregado satisfactoriamente');
+        return redirect()->route('server.show')->with('status','Agregado satisfactoriamente');
     }
 }
