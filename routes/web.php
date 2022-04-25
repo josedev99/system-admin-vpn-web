@@ -9,7 +9,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::get('/cuentas-ssh/{country?}', 'HomeController@accounts')->name('accounts');
+Route::get('/service/{name?}/{protocol?}', 'HomeController@accounts')->name('service');
+
+
 Route::get('/ssh-websocket/{id}', 'HomeController@premiumUsa1')->name('ssh-create');
 ROute::post('ssh-websocket/{id}','AccountController@WS_USA1')->name('ws_prem_usa1');
 
@@ -38,8 +40,18 @@ Route::post('/checkout', 'PaymentController@createPayment')->name('create-paymen
 Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment')->middleware('auth');
 
 //Rutas de usuario
+
 Route::get('/panel/usuarios','UsersController@index')->name('user.index')->middleware('auth');
+
+Route::get('/panel/usuarios/ver/{user?}','UsersController@show')->name('user.show')->middleware('auth');
 
 Route::get('/panel/usuarios/{user}','UsersController@edit')->name('user.edit')->middleware('auth');
 Route::put('/panel/usuarios/{user}','UsersController@update')->name('user.update')->middleware('auth');
 Route::delete('/panel/usuarios/{user}','UsersController@destroy')->name('user.destroy')->middleware('auth');
+//ROUTE SERVICE
+Route::get('/panel/services','ServiceController@index')->name('service.index')->middleware('auth');
+Route::get('/panel/service','ServiceController@create')->name('service.create')->middleware('auth');
+Route::post('/panel/service','ServiceController@store')->name('service.store')->middleware('auth');
+Route::get('/panel/service/{service}','ServiceController@edit')->name('service.edit')->middleware('auth');
+Route::put('/panel/service/{service}','ServiceController@update')->name('service.update')->middleware('auth');
+Route::delete('/panel/service/{service}','ServiceController@destroy')->name('service.destroy')->middleware('auth');

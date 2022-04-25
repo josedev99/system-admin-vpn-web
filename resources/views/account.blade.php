@@ -8,8 +8,7 @@
     </div>
     <div class="container py-5">
         <div class="row">
-            @foreach ($data as $item)
-            @if ($item->country == request('country'))
+            @forelse ($data as $item)
                 
             <div class="col-12 col-sm-12 col-md-3 mb-5">
                 <div class="card card-link">
@@ -37,9 +36,9 @@
                 </div>
                 </div>
             </div>
-            
-            @endif
-            @endforeach
+            @empty
+                <h3>No hay servidores</h3>
+            @endforelse
             
         </div>
     </div>

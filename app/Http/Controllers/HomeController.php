@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\account;
 use App\server;
+use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,12 +29,17 @@ class HomeController extends Controller
     {
         $getServersAll = server::all()->count();
         $getAccountsAll = account::all()->count();
-        
-        return view('home',compact('getServersAll','getAccountsAll'));
+
+        $getServiceAll = Service::all();
+        $numberServer = DB::table('services')->
+            join('servers','services.id','servers.service_id')->count();
+
+        return view('home',compact('getServersAll','getAccountsAll','getServiceAll','numberServer'));
     }
-    public function accounts()
+    public function accounts($name,Service $protocol)
     {
-        $data = server::all();
+        $id = $protocol->id;
+        $data = server::where('service_id',$id)->get();
         return view('account',compact('data'));
     }
     public function premiumUsa1($id){

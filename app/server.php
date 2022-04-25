@@ -19,6 +19,7 @@ class server extends Model
         'domain',
         'vps_user',
         'vps_passwd',
-        'user_id'
+        'user_id',
+        'service_id'
     ];
 }

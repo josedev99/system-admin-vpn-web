@@ -8,7 +8,7 @@
                 
                 <h1 class="my-3 text-light title-1">Obtener cuentas SSH premium y gratis, para accesos a VPN</h1>
                 <h3 class="mb-3 text-info">Conexión rápida y acceso a páginas bloqueadas.</h3>
-                <a href="{{ route('accounts') }}" class="btn btn-outline-info header__btn">COMENZAR!!</a>
+                <a href="{{ route('service') }}" class="btn btn-outline-info header__btn">COMENZAR!!</a>
                 
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center">
@@ -83,59 +83,29 @@
         <h2 class="text-center title-2">Prueba nuestros servicios</h2>
 
         <div class="row justify-content-center">
+
+            @foreach ($getServiceAll as $item)
+                
             <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center my-3">
                 <div class="card__server">
                     <div class="card__type-server">
-                        <p class="text-center text-dark">WEBSOCKET</p>
+                        <p class="text-center text-dark">{{ $item->protocol }}</p>
                     </div>
                     <div class="card__title">
-                        <h2 class="text-center my-2">Brazil</h2>
+                        <h2 class="text-center my-2">{{ $item->country }}</h2>
                     </div>
                     <div class="card__icon">
-                        <img height="50" src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650208378/brazil_qnyuxs.png" alt="flag">
+                        <img height="50" src="{{ asset('storage/'.$item->flag) }}" alt="flag">
                     </div>
                     <div class="card-body text-center">
                         <span class="card__info-c my-3">1 servidores</span>
-                        <a class="btn btn-outline-primary" href="{{ route('accounts','Brasil') }}">CREAR SERVER</a>
+                        <a class="btn btn-outline-primary" href="{{ route('service',[$item->protocol,$item->id]) }}">CREAR SERVER</a>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center my-3">
-                <div class="card__server">
-                    <div class="card__type-server">
-                        <p class="text-center text-dark">WEBSOCKET</p>
-                    </div>
-                    <div class="card__title">
-                        <h2 class="text-center my-2">Estados Unidos</h2>
-                    </div>
-                    <div class="card__icon">
-                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650085922/us_k6yhiv.png" alt="flag">
-                    </div>
-                    <div class="card-body text-center">
-                        <span class="card__info-c my-3">2 servidores</span>
-                        <a class="btn btn-outline-primary" href="{{ route('accounts','estados-unidos') }}">CREAR SERVER</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
-            <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center my-3">
-                <div class="card__server">
-                    <div class="card__type-server">
-                        <p class="text-center text-dark">WEBSOCKET</p>
-                    </div>
-                    <div class="card__title">
-                        <h2 class="text-center my-2">Canadá</h2>
-                    </div>
-                    <div class="card__icon">
-                        <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1650086002/ca_tppum6.png" alt="flag">
-                    </div>
-                    <div class="card-body text-center">
-                        <span class="card__info-c my-3">1 servidores</span>
-                        <a class="btn btn-outline-primary" href="{{ route('accounts','Canada') }}">CREAR SERVER</a>
-                    </div>
-                </div>
-            </div>
-
+            
         </div>
         
     </div>

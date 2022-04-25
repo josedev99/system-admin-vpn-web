@@ -1,6 +1,6 @@
 <!-- Navbar-->
 <header class="app-header"><a class="app-header__logo" href="{{ route('panel') }}">ADMIN</a>
-    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="{{ route('accounts') }}" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="{{ route('service') }}" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
       

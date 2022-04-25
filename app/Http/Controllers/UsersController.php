@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\rol;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -50,9 +51,12 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(User $user)
+    {   
+        $getUsersAccounts = DB::table('users')->
+            join('accounts','users.id','=','accounts.user_id')->where('users.id',$user->id)->get();
+        return view('panel.user.show',compact('getUsersAccounts'));
+        //return $getUsersAccounts;
     }
 
     /**

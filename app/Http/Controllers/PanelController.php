@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\server;
+use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ class PanelController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth','roles:1']);
+        $this->middleware(['auth','roles:1,2,3']);
     }
     public function index(){
         $numUser = DB::table('servers')->
@@ -21,7 +22,8 @@ class PanelController extends Controller
     }
     public function addServer(){
         $getServer = new server();
-        return view('panel.server.add',compact('getServer'));
+        $getServices = Service::all();
+        return view('panel.server.add',compact('getServer','getServices'));
     }
     public function saveServer(){
         $data = request()->validate([
@@ -36,7 +38,8 @@ class PanelController extends Controller
             "limit" => 'required',
             "domain" => 'required',
             'vps_user' => 'required',
-            'vps_passwd' => 'required'
+            'vps_passwd' => 'required',
+            'service_id' => 'required'
         ]);
         //ID USERS AUTENTICATED
         $data['user_id'] = Auth::user()->id;

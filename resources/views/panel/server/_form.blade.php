@@ -148,6 +148,15 @@
             </div>
             
             <div class="form-group">
+              <label for="exampleSelect1">Protocol</label>
+              <select class="form-control @error('type') is-invalid @enderror" name="service_id" id="type" required>
+                @foreach ($getServices as $item)
+                  <option value="{{ $item->id }}">{{ $item->protocol }} | {{ $item->country }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="days">Conexiones</label>
               <input class="form-control @error('limit') is-invalid @enderror" name="limit" value="{{ old('limit',$getServer->limit) }}" type="txt" placeholder="Limite de conexión 5"><small class="form-text text-muted" ></small>
             </div>

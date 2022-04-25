@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\server;
+use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,8 @@ class ServerController extends Controller
     }
     public function edit(server $id){
         $getServer = $id;
-        return view('panel.server.edit',compact('getServer'));
+        $getServices = Service::all();
+        return view('panel.server.edit',compact('getServer','getServices'));
     } 
     public function update(server $id){
         $data = request()->validate([
@@ -34,12 +36,13 @@ class ServerController extends Controller
             "limit" => 'required',
             "domain" => 'required',
             'vps_user' => 'required',
-            'vps_passwd' => 'required'
+            'vps_passwd' => 'required',
+            'service_id' => 'required'
         ]);
         //ID USERS AUTENTICATED
         $data['user_id'] = Auth::user()->id;
         $id->update($data);
-        return redirect()->back()->with('status','Servidor editado!!');
+        return redirect()->back()->with('status','Servidor actualizado!!');
     } 
     public function destroy(server $id){
         $id->delete();

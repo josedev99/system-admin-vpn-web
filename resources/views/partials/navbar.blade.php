@@ -18,7 +18,7 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('accounts') }}">{{ __('Accounts SSH') }}</a>
+                        <a class="nav-link" href="{{ route('service') }}">{{ __('Accounts SSH') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
