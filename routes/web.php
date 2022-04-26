@@ -10,6 +10,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::get('/service/{name?}/{protocol?}', 'HomeController@accounts')->name('service');
+Route::get('services','ServerController@serverAll')->name('service.all');
 
 
 Route::get('/ssh-websocket/{id}', 'HomeController@premiumUsa1')->name('ssh-create');

@@ -11,7 +11,7 @@ class ServerController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('roles:1');
+        return $this->middleware('roles:1')->except('serverAll');
     }
     //Lista todos los servers
     public function show(){
@@ -43,6 +43,10 @@ class ServerController extends Controller
         $data['user_id'] = Auth::user()->id;
         $id->update($data);
         return redirect()->back()->with('status','Servidor actualizado!!');
+    }
+    public function serverAll(){
+        $data = server::all();
+        return view('account',compact('data'));
     } 
     public function destroy(server $id){
         $id->delete();

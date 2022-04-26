@@ -8,7 +8,7 @@
                 
                 <h1 class="my-3 text-light title-1">Obtener cuentas SSH premium y gratis, para accesos a VPN</h1>
                 <h3 class="mb-3 text-info">Conexión rápida y acceso a páginas bloqueadas.</h3>
-                <a href="{{ route('service') }}" class="btn btn-outline-info header__btn">COMENZAR!!</a>
+                <a href="{{ route('service.all') }}" class="btn btn-outline-info header__btn">COMENZAR!!</a>
                 
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center">
