@@ -24,9 +24,9 @@
             <div class="col-12 col-sm-12 col-md-4">
                 <h3 class="text-center">Otros servicios</h3>
                 <ul class="footer__list">
-                    <li><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="">Registrarse</a></li> 
-                    <li><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="">Politicas</a></li>
-                    <li><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="">Admninistración</a></li>
+                    <li><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="{{ route('register') }}">Registrarse</a></li> 
+                    <li><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="{{ route('termino') }}">Politicas</a></li>
+                    <li><i class="fa-solid fa-arrow-up-right-from-square"></i><a href="{{ route('panel') }}">Admninistración</a></li>
                 </ul>
             </div>
         </div>

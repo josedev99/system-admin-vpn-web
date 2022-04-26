@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/terminos-condiciones', 'HomeController@termino')->name('termino'); //Politicas
 
 
 Route::get('/service/{name?}/{protocol?}', 'HomeController@accounts')->name('service');

@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('index','accounts','premiumUsa1');
+        $this->middleware('auth')->except('index','accounts','premiumUsa1','termino');
     }
 
     /**
@@ -45,5 +45,8 @@ class HomeController extends Controller
     public function premiumUsa1($id){
         $server = server::where('id','=',$id)->get();
         return view('premium-usa1',compact('server'));
+    }
+    public function termino(){
+        return view('termino');
     }
 }
