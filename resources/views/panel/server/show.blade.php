@@ -1,6 +1,16 @@
 @extends('panel.layouts.app')
 @section('title','Server')
 @section('content')
+
+<script>
+  function questionDelete(){
+    if(!confirm('Estas seguro de eliminarlo?')){
+      document.getElementById('delete-form').submit()
+
+    }
+  }
+</script>
+
 @include('panel.partials.alert')
 <div class="tile">
     <h3 class="tile-title">Server</h3>
@@ -27,15 +37,20 @@
             <td>{{ $item->domain }}</td>
             <td>
               @if (Auth::user()->id == $item->user_id)    
-              <a href="{{ route('server.destroy',$item) }}" class="btn btn-outline-danger btn-sm" onclick="event.preventDefault();
-              document.getElementById('delete-form').submit();">Delete</a>
-              <a href="{{ route('server.edit',$item) }}" class="btn btn-outline-info btn-sm">Update</a>
-
-              <form id="delete-form" action="{{ route('server.destroy',$item) }}" method="POST">
-                  @method('DELETE')
-                  @csrf
-                  
-              </form>
+              
+              
+              <div class="d-flex">
+                <div>
+                  <a href="{{ route('server.edit',$item) }}" class="btn btn-outline-info btn-sm mr-2">Update</a>
+                </div>
+                <div>
+                  <form id="delete-form" action="{{ route('server.destroy',$item) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button onclick="questionDelete()" class="btn btn-outline-danger btn-sm" type="submit">Delete</button>    
+                </form>
+                </div>
+              </div>
               @endif
             </td>
           </tr>

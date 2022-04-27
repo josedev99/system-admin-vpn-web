@@ -49,19 +49,21 @@
             </td>
             
             <td>
-                
-              <a href="{{ route('user.show',$item) }}" class="btn btn-outline-info btn-sm">Cuentas</a>
-              
-              <a href="{{ route('user.edit',$item) }}" class="btn btn-outline-info btn-sm">Update</a>
-              
-              <div class="my-2">
-                <form id="delete-form" action="{{ route('user.destroy',$item) }}" method="POST">
-                  @method('DELETE')
-                  @csrf
-                  <button onclick="questionDelete()" class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
-              </form>
-              </div>
-            
+                <div class="d-flex">
+                  <div>
+                    <a href="{{ route('user.show',$item) }}" class="btn btn-outline-info btn-sm">Cuentas</a>
+                  </div>
+                  <div>
+                    <a href="{{ route('user.edit',$item) }}" class="btn btn-outline-info btn-sm mx-2">Update</a>
+                  </div>
+                  <div>
+                    <form id="delete-form" action="{{ route('user.destroy',$item) }}" method="POST">
+                      @method('DELETE')
+                      @csrf
+                      <button onclick="questionDelete()" class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                  </form>
+                  </div>
+                </div>            
             </td>
           </tr>
           @endforeach
