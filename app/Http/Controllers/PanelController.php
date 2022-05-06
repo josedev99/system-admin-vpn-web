@@ -40,6 +40,8 @@ class PanelController extends Controller
             'vps_user' => 'required',
             'vps_passwd' => 'required'
         ]);
+        //added id
+        $data['service_id'] = request()->service_id;
         //ID USERS AUTENTICATED
         $data['user_id'] = Auth::user()->id;
         server::create($data);
