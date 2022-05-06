@@ -38,8 +38,7 @@ class PanelController extends Controller
             "limit" => 'required',
             "domain" => 'required',
             'vps_user' => 'required',
-            'vps_passwd' => 'required',
-            'service_id' => 'required'
+            'vps_passwd' => 'required'
         ]);
         //ID USERS AUTENTICATED
         $data['user_id'] = Auth::user()->id;

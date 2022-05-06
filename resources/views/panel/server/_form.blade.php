@@ -150,6 +150,7 @@
             <div class="form-group">
               <label for="exampleSelect1">Protocol</label>
               <select class="form-control @error('type') is-invalid @enderror" name="service_id" id="type">
+                  <option value="">Inactivo | Vacio</option>
                 @foreach ($getServices as $item)
                   <option value="{{ $item->id }}">{{ $item->protocol }} | {{ $item->country }}</option>
                 @endforeach
