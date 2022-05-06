@@ -23,6 +23,7 @@
                 <tr><td>OpenSSH</td><td>: <b>22</b></td></tr>
                 <tr><td>Dropbear+SSL</td><td>: <b>443</b></td></tr>
                 <tr><td>SSH WebSocket</td><td>: <b>80</b></td></tr>
+                <tr><td>UDP</td><td>: <b>7300</b></td></tr>
                 </tbody></table>
                 <hr>
                 <div class="d-flex justify-content-between">
