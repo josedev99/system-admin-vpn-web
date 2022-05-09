@@ -25,6 +25,7 @@
                       </tr></tbody>
                     @endforeach  
               </table>
+              {{ $getUsersAll->links() }}
             @else
               <h4>¡No hay usuario creados!</h4>
             @endif

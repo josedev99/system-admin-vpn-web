@@ -49,7 +49,7 @@ class AccountController extends Controller
         $getUsersAll = DB::table('servers')->
             join('accounts','servers.id','=','accounts.server_id')->
             where('accounts.user_id',auth()->user()->id)->orderBy('accounts.id','desc')->
-            get();
+            paginate(10);
         return view('panel.ssh.index',compact('getUsersAll'));
     }
     public function command_ssh($user,$passwd,$date){

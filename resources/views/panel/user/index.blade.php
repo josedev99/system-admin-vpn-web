@@ -67,7 +67,7 @@
             </td>
           </tr>
           @endforeach
-        
+          {{ $getUsersAll->links() }}
       </tbody>
     </table>
   </div>

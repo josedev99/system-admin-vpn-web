@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $getUsersAll = User::all();
+        $getUsersAll = User::paginate(10);
         return view('panel.user.index',compact('getUsersAll'));
     }
 
@@ -54,7 +54,9 @@ class UsersController extends Controller
     public function show(User $user)
     {   
         $getUsersAccounts = DB::table('users')->
-            join('accounts','users.id','=','accounts.user_id')->where('users.id',$user->id)->get();
+            join('accounts','users.id','=','accounts.user_id')->
+            join('servers','accounts.server_id','=','servers.id')->
+            where('users.id',$user->id)->get();
         return view('panel.user.show',compact('getUsersAccounts'));
         //return $getUsersAccounts;
     }

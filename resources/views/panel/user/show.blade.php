@@ -8,13 +8,18 @@
         <a class="btn btn-outline-info btn-sm" href="{{ route('user.index') }}"> Regresar</a>
     </div>
     @forelse ($getUsersAccounts as $item)
-        
-    <div class="list-group mb-2">
-        <button type="button" class="list-group-item list-group-item-action active">
-          {{ $item->name }}
-        </button>
-        <button type="button" class="list-group-item list-group-item-action">{{ $item->user }} | {{ $item->passwd }} | {{ $item->created }} | {{ $item->expire }}</button>
-      </div>
+    <ul class="list-unstyled">
+      <li class="list-group-item d-flex justify-content-between align-items-center">User SSH: <b>{{ $item->user }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">passwd SSH: <b>{{ $item->passwd }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">Fecha creado: <b>{{ $item->created }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">Fecha de exp: <b>{{ $item->expire }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">Pais: <b>{{ $item->country }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">server: <b>{{ $item->name }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">Dominio: <b>{{ $item->domain }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">Dias: <b>{{ $item->days }}</b></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">Precio: <b>{{ $item->price }}</b></li>
+    </ul>
+    
       @empty
       
       @endforelse
