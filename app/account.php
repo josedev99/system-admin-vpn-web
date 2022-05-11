@@ -13,6 +13,7 @@ class account extends Model
         'expire',
         'user_id',
         'server_id',
-        'status'
+        'status',
+        'sni'
     ];
 }

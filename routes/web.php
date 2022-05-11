@@ -13,10 +13,11 @@ Route::get('/terminos-condiciones', 'HomeController@termino')->name('termino'); 
 Route::get('/service/{name?}/{protocol?}', 'HomeController@accounts')->name('service');
 Route::get('services','ServerController@serverAll')->name('service.all');
 
-
+//WEBSOCKET
 Route::get('/ssh-websocket/{id}', 'HomeController@premiumUsa1')->name('ssh-create');
 ROute::post('ssh-websocket/{id}','AccountController@WS_USA1')->name('ws_prem_usa1');
-
+//V2RAY
+ROute::post('v2ray/{id}','v2rayController@v2rayCore')->name('v2ray');
 //Routes panel ///GENERAL
 
 Route::get('/panel','PanelController@index')->name('panel');

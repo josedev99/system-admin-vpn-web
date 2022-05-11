@@ -519,6 +519,7 @@ class ComposerStaticInit2861dcf579d392d423f07b2b00115435
         'App\\Http\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiceController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Controllers\\VpsController' => __DIR__ . '/../..' . '/app/Http/Controllers/VpsController.php',
+        'App\\Http\\Controllers\\v2rayController' => __DIR__ . '/../..' . '/app/Http/Controllers/v2rayController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',

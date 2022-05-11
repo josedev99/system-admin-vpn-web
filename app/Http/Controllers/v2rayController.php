@@ -7,15 +7,17 @@ use App\server;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AccountController extends Controller
+class v2rayController extends Controller
 {
-    public function WS_USA1($id){
+    public function v2rayCore($id){
         
         $data = request()->validate([
             'user' => "required",
-            'passwd' => "required",
+            'domain_bug' => 'required',
+
             'g-recaptcha-response' => 'recaptcha'
         ]);
+        
         //Validation data
         $validateUser = account::where('user','=','hive-vpn.tk-'.$data['user'])->get();
         if(count($validateUser) > 0){
@@ -27,8 +29,8 @@ class AccountController extends Controller
         
         $resp = account::create([
             'user' => 'hive-vpn.tk-'.$data['user'],
-            'passwd' => $data['passwd'],
-            'sni' => '',
+            'passwd' => '',
+            'sni' => $data['domain_bug'],
             'created' => $fecha_actual,
             'expire' => get_days(),
             'user_id' => auth()->user()->id,
@@ -40,11 +42,33 @@ class AccountController extends Controller
             where('accounts.id',$resp->id)->
             get();
         $resp_data = $getUserAll[0];
+        
         //Create user a server ssh
+        $comand = "bash adduser.sh";
         
-        $this->command_ssh($resp->user, $resp->passwd,get_days());
+        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
+        stream_set_blocking( $stream, true );
         
-        return view('view_account',compact('resp_data'));
+        $genraUUID = "";
+        
+        while( $buf = fread($stream,4096) ){
+            
+            $genraUUID .= $buf;
+            
+        } 
+        fclose($stream);
+        //UUID
+        $searchString = "\n";
+        $replaceString = "";
+        $uuid = str_replace($searchString,$replaceString,$genraUUID);
+        $vmess = json_encode([ "v" => "2", "ps" => "free.v2ray-ssl.tk:443", "add" => $data['domain_bug'], "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => "free.v2ray-ssl.tk", "id" => $uuid, "tls" => "tls"]);
+        
+        $rData = [
+            'vmess' => base64_encode($vmess),
+            'uuid' => $uuid
+        ];
+        return view('view_v2ray',compact('rData','resp_data'));
+        
     }
     public function showSSH(){
         $getUsersAll = DB::table('servers')->
@@ -53,8 +77,10 @@ class AccountController extends Controller
             paginate(10);
         return view('panel.ssh.index',compact('getUsersAll'));
     }
+    /*
     public function command_ssh($user,$passwd,$date){
-        $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
+        $uuid = "";
+        $comand = "bash adduser.sh";
 
         $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
         stream_set_blocking( $stream, true );
@@ -70,4 +96,5 @@ class AccountController extends Controller
         } 
         fclose($stream);
     }
+    */
 }

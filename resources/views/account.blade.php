@@ -40,7 +40,7 @@
                 </div>
                 @endif
             @empty
-                <h3>No hay servidores</h3>
+                <h3>No hay servidores disponibles.</h3>
             @endforelse
             
         </div>

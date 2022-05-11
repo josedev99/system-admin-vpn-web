@@ -43,10 +43,12 @@ class HomeController extends Controller
         return view('account',compact('data'));
     }
     public function premiumUsa1($id){
-        $server = server::where('id','=',$id)->get();
+        $server = DB::table('services')->join('servers','services.id','=','servers.service_id')->
+            where('servers.id','=',$id)->get();
+        
         return view('premium-usa1',compact('server'));
     }
     public function termino(){
-        return view('termino');
+        return view('terminos');
     }
 }
