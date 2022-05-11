@@ -36,7 +36,8 @@ class ServerController extends Controller
             "limit" => 'required',
             "domain" => 'required',
             'vps_user' => 'required',
-            'vps_passwd' => 'required'
+            'vps_passwd' => 'required',
+            'status' => 'required'
         ]);
         //added id
         $data['service_id'] = request()->service_id;

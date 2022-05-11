@@ -20,6 +20,7 @@ class server extends Model
         'vps_user',
         'vps_passwd',
         'user_id',
-        'service_id'
+        'service_id',
+        'status'
     ];
 }

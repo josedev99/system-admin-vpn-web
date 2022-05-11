@@ -27,7 +27,9 @@ class ServerSeeder extends Seeder
             'domain' => 'vip1.hivevpn.tk',
             'vps_user' => 'root',
             'vps_passwd' => 'vps-2021-hive',
-            'user_id' => 1
+            'user_id' => 1,
+            'service_id' => 1,
+            'status' => 1
         ]);
         server::create([
             'name' => 'Estados Unidos',
@@ -42,7 +44,9 @@ class ServerSeeder extends Seeder
             'domain' => 'usa1.vip-cloud.tk',
             'vps_user' => 'root',
             'vps_passwd' => 'vps-2021-hive',
-            'user_id' => 1
+            'user_id' => 1,
+            'service_id' => 1,
+            'status' => 1
         ]);
         server::create([
             'name' => 'Estados Unidos',
@@ -57,7 +61,9 @@ class ServerSeeder extends Seeder
             'domain' => 'sf.vpn-internet.tk',
             'vps_user' => 'root',
             'vps_passwd' => 'vps-2021-hive',
-            'user_id' => 1
+            'user_id' => 1,
+            'service_id' => 1,
+            'status' => 1
         ]);
     }
 }

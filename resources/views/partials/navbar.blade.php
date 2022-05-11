@@ -16,10 +16,10 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('service.all') }}">{{ __('Accounts SSH') }}</a>
+                </li>
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('service') }}">{{ __('Accounts SSH') }}</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>

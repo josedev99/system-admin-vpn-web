@@ -150,7 +150,12 @@
             <div class="form-group">
               <label for="exampleSelect1">Protocol</label>
               <select class="form-control @error('type') is-invalid @enderror" name="service_id" id="type">
-                  <option value="">Inactivo | Vacio</option>
+                  
+                @if($getServer->service_id != "")
+                  <option value="{{ $getServer->service_id }}"> Por defecto</option>
+                @else
+                  <option value="">Seleccionar</option>  
+                @endif
                 @foreach ($getServices as $item)
                   <option value="{{ $item->id }}">{{ $item->protocol }} | {{ $item->country }}</option>
                 @endforeach
@@ -164,6 +169,19 @@
             <div class="form-group">
               <label for="days">Dominio</label>
               <input class="form-control @error('domain') is-invalid @enderror" name="domain" type="txt" value="{{ old('domain',$getServer->domain) }}" placeholder="ejem: hive-vpn.tk"><small class="form-text text-muted" ></small>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleSelect1">Estado</label>
+              <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" required>
+                @if($getServer->status != "")
+                <option value="{{ $getServer->status }}"> {{ $getServer->status == 1 ? 'Activo' : 'Desactivado' }}</option>
+                @else
+                <option value="">Seleccionar</option>  
+                @endif
+                <option value="1">Activo</option>
+                <option value="0">Desactivar</option>
+              </select>
             </div>
       </div>
   </div>
