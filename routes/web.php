@@ -14,8 +14,8 @@ Route::get('/service/{name?}/{protocol?}', 'HomeController@accounts')->name('ser
 Route::get('services','ServerController@serverAll')->name('service.all');
 
 //WEBSOCKET
-Route::get('/ssh-websocket/{id}', 'HomeController@premiumUsa1')->name('ssh-create');
-ROute::post('ssh-websocket/{id}','AccountController@WS_USA1')->name('ws_prem_usa1');
+Route::get('/create-server/{id}', 'HomeController@premiumUsa1')->name('create-server');
+ROute::post('create-server/{id}','AccountController@WS_USA1')->name('ws_prem_usa1');
 //V2RAY
 ROute::post('v2ray/{id}','v2rayController@v2rayCore')->name('v2ray');
 Route::post('/checkout/v2ary', 'paymentV2rayController@createPayment')->name('create-payment-v2ray')->middleware('auth');
@@ -38,6 +38,7 @@ Route::post('/panel','PanelController@saveServer')->name('saveServer');
 
 //SSH account
 Route::get('/panel/cuentas-ssh','AccountController@showSSH')->name('showSSH')->middleware('auth');
+Route::get('/panel/cuentas-full','AccountController@showAllAccounts')->name('allSSH')->middleware('auth');
 
 // route for processing payment
 Route::view('/checkout', 'home')->middleware('auth');

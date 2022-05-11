@@ -42,6 +42,7 @@ class HomeController extends Controller
         $data = server::where('service_id',$id)->get();
         return view('account',compact('data'));
     }
+
     public function premiumUsa1($id){
         $server = DB::table('services')->join('servers','services.id','=','servers.service_id')->
             where('servers.id','=',$id)->get();

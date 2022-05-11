@@ -53,6 +53,14 @@ class AccountController extends Controller
             paginate(10);
         return view('panel.ssh.index',compact('getUsersAll'));
     }
+    public function showAllAccounts(){
+        $getUsersAll = DB::table('servers')->
+            join('accounts','servers.id','=','accounts.server_id')->
+            orderBy('accounts.id','desc')->
+            paginate(10);
+        return view('panel.ssh.all',compact('getUsersAll'));
+    }
+
     public function command_ssh($user,$passwd,$date){
         $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
 

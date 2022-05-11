@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2 class="text-center py-4">SSH + WebSocket Creado</h2>
-        <a class="btn btn-info btn-sm my-2" href="{{ route('ssh-create',session('server_id')) }}">Regresar</a>
+        <a class="btn btn-info btn-sm my-2" href="{{ route('create-server',session('server_id')) }}">Regresar</a>
         <div class="col-12 col-sm-12 col-md-4 mx-auto">
             <div class="alert alert-success text-center p-2" style="font-size: 14px;">
                 <strong>Success!</strong> Account has been successfully created.

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="banner__server">
         <div class="header__section-transparent d-flex flex-column justify-content-center align-items-center">
@@ -10,7 +11,6 @@
         <div class="row">
             @forelse ($data as $item)
                 @if ( $item->status == 1 )
-                    
                 <div class="col-12 col-sm-12 col-md-3 mb-5">
                     <div class="card card-link">
                     <div class="card-body p-2">
@@ -34,7 +34,7 @@
                     </div>
                     </div>
                     <div class="card-footer bg-transparent pt-0 pb-3">
-                    <a class="d-block btn btn-primary btn-block mt-2 rounded-pill" href="{{ route('ssh-create',$item) }}">CREAR</a>
+                    <a class="d-block btn btn-primary btn-block mt-2 rounded-pill" href="{{ route('create-server',$item) }}">CREAR</a>
                     </div>
                     </div>
                 </div>
