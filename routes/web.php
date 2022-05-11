@@ -18,6 +18,8 @@ Route::get('/ssh-websocket/{id}', 'HomeController@premiumUsa1')->name('ssh-creat
 ROute::post('ssh-websocket/{id}','AccountController@WS_USA1')->name('ws_prem_usa1');
 //V2RAY
 ROute::post('v2ray/{id}','v2rayController@v2rayCore')->name('v2ray');
+Route::post('/checkout/v2ary', 'paymentV2rayController@createPayment')->name('create-payment-v2ray')->middleware('auth');
+Route::get('/confirm/v2ray', 'paymentV2rayController@confirmPayment')->name('confirm-payment-v2ray')->middleware('auth');
 //Routes panel ///GENERAL
 
 Route::get('/panel','PanelController@index')->name('panel');

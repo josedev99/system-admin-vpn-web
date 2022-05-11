@@ -19,7 +19,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use PayPal\Exception\PayPalConnectionException;
-class PaymentController extends Controller
+class paymentV2rayController extends Controller
 {
     private $api_context;
     
@@ -46,7 +46,8 @@ class PaymentController extends Controller
         //Request data
         session([
                 'user' => request()->user,
-                'passwd' => request()->passwd
+                'passwd' => '',
+                'sni' => request()->domain_bug
         ]);
 // We create the payer and set payment method, could be any of "credit_card", "bank", "paypal", "pay_upon_invoice", "carrier", "alternate_payment". 
         $payer = new Payer();
@@ -67,7 +68,7 @@ class PaymentController extends Controller
         //You can set custom data with '->setCustom($data)' or put it in a session.
 // Create a redirect urls, cancel url brings us back to current page, return url takes us to confirm payment.
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(route('confirm-payment'))
+        $redirect_urls->setReturnUrl(route('confirm-payment-v2ray'))
         ->setCancelUrl(url()->current());
 // We set up the payment with the payer, urls and transactions.
         // Note: you can have different itemLists, then different transactions for it.
@@ -155,34 +156,39 @@ class PaymentController extends Controller
                 'account_id' => $resp_data->id
             ]);
             //Create user a server ssh
-            $this->command_ssh(session('user'), session('passwd'),get_days());
+            $comand = "bash adduser.sh";
+        
+        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
+        stream_set_blocking( $stream, true );
+        
+        $genraUUID = "";
+        
+        while( $buf = fread($stream,4096) ){
             
-            return view('view_account',compact('resp_data'));
+            $genraUUID .= $buf;
+            
+        } 
+        fclose($stream);
+        //UUID
+        $searchString = "\n";
+        $replaceString = "";
+        $uuid = str_replace($searchString,$replaceString,$genraUUID);
+        $vmess = json_encode([ "v" => "2", "ps" => "free.v2ray-ssl.tk:443", "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => "free.v2ray-ssl.tk", "id" => $uuid, "tls" => "tls"]);
+        
+        $rData = [
+            'vmess' => base64_encode($vmess),
+            'uuid' => $uuid
+        ];
+        return view('view_v2ray',compact('rData','resp_data'));
             
     }
     public function validateDataForm(){
         $data = request()->validate([
                 'user' => "required",
-                'passwd' => "required",
+                'domain_bug' => "required",
                 'g-recaptcha-response' => 'recaptcha'
         ]);
         return $data;
     }
-    public function command_ssh($user,$passwd,$date){
-        $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
-
-        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
-        stream_set_blocking( $stream, true );
- 
-        $data = "";
-        
-        while( $buf = fread($stream,4096) ){
-        
-        $data .= $buf;
-        //Output uuid
-        echo $buf;
-        
-        } 
-        fclose($stream);
-    }
+    
 }

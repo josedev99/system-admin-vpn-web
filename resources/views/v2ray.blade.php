@@ -16,7 +16,7 @@
             <h5 class="py-3 text-center m-0 p-0">Crear nueva cuenta</h5>
             <div class="card-body">
                 @if ($server[0]->type == "premium")
-                    <form id="form" method="POST" action="{{ route('create-payment') }}">
+                    <form id="form" method="POST" action="{{ route('create-payment-v2ray') }}">
                 @else
                     <form id="form" method="POST" action="{{ route('v2ray',request()->id) }}">
                 @endif

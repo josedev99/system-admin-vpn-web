@@ -43,7 +43,7 @@ class v2rayController extends Controller
             get();
         $resp_data = $getUserAll[0];
         
-        //Create user a server ssh
+        //Create v2ray
         $comand = "bash adduser.sh";
         
         $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
