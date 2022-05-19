@@ -25,7 +25,7 @@
             <option value="Barbados" id="BB">Barbados</option>
             <option value="Bélgica" id="BE">Bélgica</option>
             <option value="Belice" id="BZ">Belice</option>
-
+            <option value="Mexico" id="AU">Mexico</option>
             <option value="Bermudas" id="BM">Bermudas</option>
   
             <option value="Brasil" id="BR">Brasil</option>
