@@ -31,7 +31,7 @@
 
             <option value="Argentina" id="AR">Argentina</option>
             <option value="Australia" id="AU">Australia</option>
-
+            <option value="Mexico" id="AU">Mexico</option>
             <option value="Barbados" id="BB">Barbados</option>
             <option value="Bélgica" id="BE">Bélgica</option>
             <option value="Belice" id="BZ">Belice</option>

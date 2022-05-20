@@ -39,9 +39,9 @@
                         'days' => $server[0]->days,
                         'host' => $server[0]->ip,
                         'vps_user' => $server[0]->vps_user,
-                        'vps_passwd' => $server[0]->vps_passwd
+                        'vps_passwd' => $server[0]->vps_passwd,
+                        'domain' => $server[0]->domain
                     ]) }}
-                
                     @auth
                         @if ($server[0]->type == "premium")
                 
