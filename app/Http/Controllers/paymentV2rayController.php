@@ -173,7 +173,7 @@ class paymentV2rayController extends Controller
         $searchString = "\n";
         $replaceString = "";
         $uuid = str_replace($searchString,$replaceString,$genraUUID);
-        $vmess = json_encode([ "v" => "2", "ps" => "free.v2ray-ssl.tk:443", "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => "free.v2ray-ssl.tk", "id" => $uuid, "tls" => "tls"]);
+        $vmess = json_encode([ "v" => "2", "ps" => session('domain').":443", "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
         
         $rData = [
             'vmess' => base64_encode($vmess),
