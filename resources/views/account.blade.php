@@ -12,7 +12,7 @@
             @forelse ($data as $item)
                 @if ( $item->status == 1 )
                 <div class="col-12 col-sm-12 col-md-3 mb-5">
-                    <div class="card card-link">
+                    <div class="card card-link border-purple">
                     <div class="card-body p-2">
                     <h6 class="text-center">SSH SSL/TLS @if ($item->type == "premium") <span class="badge__vip">vip</span> @else <span class="badge__free">free</span> @endif</h6><hr>
                     <h4 class="text-center">{{ $item->name }}</h4>

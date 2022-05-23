@@ -4,14 +4,14 @@
 <div class="header__section d-flex justify-content-center align-items-center flex-column">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-6">
+            <div class="col-12 col-sm-12 col-md-6 header__content">
                 
                 <h1 class="my-3 text-light title-1">Obtener cuentas SSH premium y gratis, para accesos a VPN</h1>
                 <h3 class="mb-3 text-info">Conexión rápida y acceso a páginas bloqueadas.</h3>
                 <a href="{{ route('service.all') }}" class="btn btn-outline-info header__btn">COMENZAR!!</a>
                 
             </div>
-            <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center">
+            <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center header__img">
                 <img class="header__img" src="{{ asset('images/vpn-network.png') }}" alt="vpn network">
             </div>
         </div>

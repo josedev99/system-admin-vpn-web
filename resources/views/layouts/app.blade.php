@@ -21,6 +21,10 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+    <!------ICON TELEGRAM FLOAT----->
+    <div class="telegram">
+        <a target="_blank" href="https://t.me/noscriptsh"><img src="{{ asset('images/telegram.svg') }}" width="65" alt=""></a>
+    </div>
     <div id="app">
         @include('partials.navbar')
 
