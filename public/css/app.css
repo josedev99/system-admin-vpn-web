@@ -11231,3 +11231,34 @@ p {
   background-position: top;
 }
 
+/*STYLE LOGIN*/
+
+.login,
+.register {
+  background-image: url(/images/server.jpg?c06a6aa3993bed127e7e19237c2f8d7a);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(29, 48, 88);
+}
+
+@media screen and (max-width: 760px) {
+  .login {
+    height: 600px;
+  }
+}
+
+.transparent-color {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(29, 48, 88, 0.7);
+}
+

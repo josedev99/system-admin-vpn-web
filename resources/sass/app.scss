@@ -277,3 +277,29 @@ a,p{
     background-size: cover;
     background-position: top;
 }
+/*STYLE LOGIN*/
+.login,.register{
+    background-image: url('../../public/images/banner/server.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(29, 48, 88, 1);
+}
+@media screen and (max-width: 760px){
+    .login{
+        height: 600px;
+    }
+}
+.transparent-color{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(29, 48, 88, 0.7);
+}
