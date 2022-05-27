@@ -39,7 +39,7 @@ class resetPasswordController extends Controller
         $for = $data['email'];
 
         Mail::send('mails.reset_password',$data, function($msj) use($subject,$for){
-            $msj->from("hive-vpn.tk@outlook.com","Hive-vpn.tk");
+            $msj->from("hive-vpn.tk@outlook.com","Hive-vpn admin");
             $msj->subject($subject);
             $msj->to($for);
         });

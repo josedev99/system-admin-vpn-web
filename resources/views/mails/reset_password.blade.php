@@ -39,7 +39,7 @@
     <div class="container">
         <h3>Hola, {{ $email }} !!</h3>
         <br>
-        <span class="txt-compra">Link de restablecimiento: </span><a class="link" href="{{ route('password.edit') }}">Click aquí</a>
+        <span class="txt-compra">Link de restablecimiento: </span>{{ route('password.edit') }}
         <br>
         <p>No compartas este link con nadie.</p>
 
