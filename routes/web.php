@@ -61,3 +61,8 @@ Route::post('/panel/service','ServiceController@store')->name('service.store')->
 Route::get('/panel/service/{service}','ServiceController@edit')->name('service.edit')->middleware('auth');
 Route::put('/panel/service/{service}','ServiceController@update')->name('service.update')->middleware('auth');
 Route::delete('/panel/service/{service}','ServiceController@destroy')->name('service.destroy')->middleware('auth');
+
+//ROUTES PARA RESTABLECER PASSWORD
+Route::post('/user/password/reset','resetPasswordController@password_reset')->name('password.reset');
+Route::get('/user/password/edit','resetPasswordController@password_edit')->name('password.edit');
+Route::post('/user/password/update','resetPasswordController@password_update')->name('password.update');

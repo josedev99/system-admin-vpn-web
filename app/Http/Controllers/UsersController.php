@@ -11,7 +11,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('roles:1');
+        return $this->middleware('roles:1')->except('resetPassword');
     }
     /**
      * Display a listing of the resource.
