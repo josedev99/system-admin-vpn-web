@@ -102,7 +102,7 @@ a,p{
     color: #b1b1b1;
 }
 .footer__text{
-    font-size: 1rem;
+    font-size: 15px;
 }
 .footer__list{
     text-align: left;
@@ -115,7 +115,8 @@ a,p{
     padding-right: 10px;
 }
 .footer__title{
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 1.4rem;
 }
 @media screen and (max-width: 760px){
     .footer__title{

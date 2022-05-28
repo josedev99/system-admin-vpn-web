@@ -8,17 +8,27 @@
                 <div class="col-md-4">
                     <div class="card">
                         @if (session('success'))
-                            <div class="alert alert-success">
-                                <h3>{{ session('success') }}</h3>
+                        <div class="alert alert-success">
+                            <div class="checked__send-link d-flex justify-content-start align-items-center">
+
+                                <img src="{{ asset('images/icons/checked.png') }}" alt="">
+                                
+                                <h4>{{ session('success') }}</h4>
+                                
                             </div>
+                        </div>
                         @else
                         <div class="card-header">{{ __('Restablecer contraseña') }}</div>
         
                         <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
+                            @if (session('error'))
+                            <div class="checked__send-link d-flex justify-content-start align-items-center">
+
+                                <img src="{{ asset('images/icons/checked.png') }}" alt="">
+                                
+                                <h5>{{ session('error') }}</h5>
+                                
+                            </div>
                             @endif
         
                             <form method="POST" action="{{ route('password.reset') }}">

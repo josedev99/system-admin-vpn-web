@@ -44,7 +44,7 @@
         <p>No compartas este link con nadie.</p>
 
 
-        <b>Attentamente: @Tecnology Box</b>
+        <b>Attentamente: El equipo de hive-vpn</b>
         
     </div>
 

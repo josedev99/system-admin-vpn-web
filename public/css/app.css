@@ -11005,7 +11005,7 @@ p {
 }
 
 .footer__text {
-  font-size: 1rem;
+  font-size: 15px;
 }
 
 .footer__list {
@@ -11022,7 +11022,8 @@ p {
 }
 
 .footer__title {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 
 @media screen and (max-width: 760px) {

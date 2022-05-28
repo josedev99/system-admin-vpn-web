@@ -4,7 +4,7 @@
 @include('panel.partials.alert')
 <div class="tile">
     <h3 class="tile-title">Compras realizadas</h3>
-    <table class="table table-striped">
+    <table class="table table-striped table-responsive-sm">
       <thead>
         <tr>
           <th>#</th>
