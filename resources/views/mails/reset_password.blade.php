@@ -30,9 +30,6 @@
         .messages__content h1{
             font-size: 24px;
             background-color: #0f53e7;
-            background-image: linear-gradient(to top, #0f53e7 0%, #bac7e2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             margin-bottom: 1.5rem;
         }
         .messages__button{
@@ -46,7 +43,7 @@
         }
         .messages__content p{
             color: #0f53e7;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin: 15px 0px
         }
         .messages__footer{
