@@ -66,7 +66,7 @@
         <div class="messages">
             <div class="messages__header">
                 <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1654012560/icons/logo_xmrw5z.svg" width="80" alt="">
-                <h3>Hola, Jose !!</h3>
+                <h3>Hola, {{ $email }} !!</h3>
             </div>
             <div class="messages__content">
                 <h1>Usa este link para restablecer tu contraseña</h1>
