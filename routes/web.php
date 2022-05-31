@@ -70,6 +70,8 @@ Route::post('/user/password/update','resetPasswordController@password_update')->
 
 /*TESTING VIEWMAIL*/
 
+/*
 Route::get('mail', function (){
     return view('mails.reset_password');
 });
+*/
