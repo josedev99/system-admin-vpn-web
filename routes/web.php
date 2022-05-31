@@ -66,3 +66,10 @@ Route::delete('/panel/service/{service}','ServiceController@destroy')->name('ser
 Route::post('/user/password/reset','resetPasswordController@password_reset')->name('password.reset');
 Route::get('/user/password/edit','resetPasswordController@password_edit')->name('password.edit');
 Route::post('/user/password/update','resetPasswordController@password_update')->name('password.update');
+
+
+/*TESTING VIEWMAIL*/
+
+Route::get('mail', function (){
+    return view('mails.reset_password');
+});

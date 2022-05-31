@@ -6,46 +6,77 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Factura de compra</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+        }
         .container{
-            background: #f1f1f1;
-            padding: 10px 5px;
+            padding: 2rem 15rem;
         }
-        h3{
-            color: rgb(72, 72, 88);
-            font-family: Arial, Helvetica, sans-serif;
+        .messages{
+            background: #dde6e5e3;
+            padding: 2rem;
+        }
+        .messages__header{
             text-align: center;
+            color: #0f53e7;
+            font-size: 1.2rem;
         }
-        p{
-            color: #1b1b1b;
-            line-height: 1.5
+        .messages__content{
+            text-align: center
         }
-        .txt-compra{
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.5rem;
+        .messages__content h1{
+            font-size: 24px;
+            background-color: #0f53e7;
+            background-image: linear-gradient(to top, #0f53e7 0%, #bac7e2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .messages__button{
+            padding: 10px 24px;
+            outline: none;
+            font-size: 16px;
+            background: #0f53e7;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #f1f1f1;
+        }
+        .messages__content p{
+            color: #0f53e7;
+            font-size: 1.2rem;
+            margin: 15px 0px
+        }
+        .messages__footer{
             text-align: center;
-            display: block;
-            color: #738794
+            color: #7a7c80;
+            font-size: 14px;
         }
-        .link{
-            font-size: 25px;
-            text-align: center;
-            display: block;
-            margin-top: 10px;
+        @media screen and (max-width: 760px){
+            .container{
+                padding: 1rem ;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h3>Hola, {{ $email }} !!</h3>
-        <br>
-        <span class="txt-compra">Link de restablecimiento: </span>{{ route('password.edit') }}
-        <br>
-        <p>No compartas este link con nadie.</p>
-
-
-        <b>Attentamente: El equipo de hive-vpn</b>
-        
+        <div class="messages">
+            <div class="messages__header">
+                <img src="https://res.cloudinary.com/ddfsqcy12/image/upload/v1654012560/icons/logo_xmrw5z.svg" width="80" alt="">
+                <h3>Hola, Jose !!</h3>
+            </div>
+            <div class="messages__content">
+                <h1>Usa este link para restablecer tu contraseña</h1>
+                <a class="messages__button" href="{{ route('password.edit') }}">Restablecer</a>
+                <p>Sino eres tú, inicia sesión para verificar tu cuenta</p>
+            </div>
+            <div class="messages__footer">
+                <p>Has recibido este correo electrónico de alerta de restablecimiento de contraseña. Si deseas agregar o cambiar tu correo comunicate con el administrador de la página, inicia sesión en tu cuenta de hive-vpn</p>
+            </div>
+        </div>
     </div>
 
 </body>
