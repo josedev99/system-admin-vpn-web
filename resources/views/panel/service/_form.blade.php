@@ -17,7 +17,7 @@
             <option value="Afganistán" id="AF">Afganistán</option>
             <option value="Albania" id="AL">Albania</option>
             <option value="Alemania" id="DE">Alemania</option>
-            <option value="Andorra" id="AD">Andorra</option>
+            <option value="Latvia" id="AD">Latvia</option>
 
             <option value="Argentina" id="AR">Argentina</option>
             <option value="Australia" id="AU">Australia</option>
