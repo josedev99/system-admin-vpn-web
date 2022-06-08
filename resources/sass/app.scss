@@ -23,15 +23,21 @@ a,p{
     font-weight: 500 !important;
 }
 .btn{
-    padding: 11px 22px;
-    border-radius: 20px;
+    padding: 12px 22px;
+    border-radius: 3px;
+    box-shadow: rgba(0,0,0, 0.2) 0 3px 6px;
+    border: none;
+}
+.btn:hover{
+    color: #f2f2f9;
 }
 .title-1{
     font-family: 'Poppins', sans-serif !important;
     font-weight: 700;
 }
 .title-1 span{
-    color: #f8aa02;
+    /*color: #f8aa02;*/
+    color: #0f53e7;
 }
 .title-2{
     font-family: 'Poppins', sans-serif !important;
@@ -61,52 +67,93 @@ a,p{
 /*STYLE HEADER SECTION*/
 
 .header__section{
-    background: url('https://res.cloudinary.com/ddfsqcy12/image/upload/v1650087181/cloud-g01e874902_1280_uiotqg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position:top right;
+    background-image: url('../../public/images/banner/main-banner.png');
     height: 80vh;
     width: 100%;
 }
 
 .header__btn{
-    color: #fff;
+    color: #1f2d41;
+    font-weight: 500;
+    width: 220px;
 }
 .header__img{
     position: relative;
-    height: 300px;
+    height: 400px;
+}
+.header__content h1{
+    font-size: 2.8rem;    
+    color: #212529;
+}
+.text-description{
+    color: #5f6578;
+    font-size: 22px;
+}
+@media screen and (max-width: 480px){
+    .header__section{
+        min-height: 100vh;
+        overflow: hidden;
+    }
+    .header__content{
+        margin-top: 40px;
+    }
+    .header__content h1{    
+        font-size:2rem;
+    }
+    .header__content h3{
+        font-size: 1.5rem;
+    }
+    .header__img img{
+        margin-top: 40px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 760px){
+    .header__img img{
+        margin-top: 40px;
+        height: 400px;
+    }
 }
 
 /* STYLE SECTION SERVICE*/
 
 .section__services{
-    background: #f1f1f1;
+    background: #fff;
     padding: 4rem 0px;
 }
 .services__icon{
     margin: 0px 20px;
 }
 .services__info{
-    font-size: 1.3rem;
+    font-size: 18px;
+    color: #414655;
     text-align: center;
 }
 
 /*STYLE SECTION INFORMATION*/
 .section__information{
     padding: 4rem 0px;
+    background: #f4f4f9;
 }
 .information__card{
-    background: #414655;
-    background-image: linear-gradient(to bottom, #414655, #1a1c2b);
+    background: #fff;
     padding: 1.5rem 1.5rem 0rem 1.5rem;
-    color: #dbd7cc;
-    border-radius: 10px;
+    color: #212529;
+    border-radius: 3px;
     margin-bottom: 1rem;
+    box-shadow: rgba(0, 0, 0,.16) 0 3px 6px;
 }
 .information__card .card-body h3{
     font-weight: 700;
     font-family: 'Poppins';
     font-size: 1.4rem;
+}
+.information__card .card-body p{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins',sans-serif;
+    color: #212529;
 }
 .card-circle{
     border-radius: 50%;
@@ -118,41 +165,59 @@ a,p{
 /*
 Style css Security
 */
-.security__container{
-    background-image: url('https://res.cloudinary.com/ddfsqcy12/image/upload/v1654116520/HIVE-VPN/data-center_pmqsmn.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+
+.security{
+    padding: 4rem 0;
+}
+.security__content{
     height: 350px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
-.security__content{
-    background: #414655;
-    background-image: linear-gradient(to bottom, #414655, #1a1c2b);
-    width: 50%;
-    padding: 1rem;
-    border-radius: 5px;
+.security__img-right img{
+    height: 250px;
 }
-.security__content h2{
+.security__info-left{
+    width: 600px;
+    background: #f4f4f9;
+    padding: 25px;
+    border-radius: 3px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+    position: relative;
+}
+.security__info-left img{
+    position: absolute;
+    top: 40%;
+    left: -30px;
+    height: 50px;
+}
+.security__info-left h2{
     text-align: center;
     font-weight: 700;
-    color: #f1f1f1;
 }
-.security__content p{
+.security__info-left p{
     font-size: 16px;
     font-family: 'Poppins',sans-serif;
-    color: #f1f1f1;
+    color: #414655;
 }
 @media screen and (max-width: 760px){
-    .security__container{
-        height: 100%;
-        padding: 1rem 0px;
-    }
     .security__content{
-        width: 80%;
+        flex-direction: column;
+        height: 100%;
+    }
+    .security__info-left{
+        width: 100%;
+    }
+    .security__info-left img{
+        display: none;
+    }
+    .security__img-right{
+        margin-top: 40px;
+    }
+    .security__img-right img{
+        height: 250px;
     }
 }
 /*
@@ -162,12 +227,13 @@ End Style css Security
 /*STYLE FOOTER*/
 
 .footer__content{
-    background: #1f2d41;
+    background: #f4f4f9;
     padding: 4rem 0px 2rem 0px;
     color: #b1b1b1;
 }
 .footer__text{
     font-size: 15px;
+    color: #5f6578;
 }
 .footer__list{
     text-align: left;
@@ -181,7 +247,12 @@ End Style css Security
 }
 .footer__title{
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 18px;
+    color: #414655;
+}
+.footer__bottom-dev{
+    font-size: 14px;
+    color: #5f6578;
 }
 @media screen and (max-width: 760px){
     .footer__title{
@@ -250,32 +321,32 @@ End Style css Security
     width: 100%;
     background-color: rgba(29, 48, 88, 0.7);
 }
-.header__content h1{
-    font-size: 2.8rem;    
-    background-color: #0f53e7;
-    background-image: linear-gradient(to top, #0f53e7 0%,#bac7e2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-@media screen and (max-width: 480px){
-    .header__content{
-        margin-top: 40px;
-    }
-    .header__content h1{    
-        font-size:2rem;
-    }
-    .header__content h3{
-        font-size: 1.5rem;
-    }
-    .header__img img{
-        height: 220px;
-    }
-}
+
 /*STYLE INFO */
+
 .content__number{
+    background-image: url('../../public/images/banner/switch.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-color: rgba(0,0,0,.5);
     padding: 4rem 0px;
-    background: #f2f5f7;
+    position: relative;
+    z-index: 1;
 }
+
+.content__number::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    z-index: -1;
+}
+
 .content__number-title{
     font-size: 2.3rem;
 }
@@ -337,13 +408,7 @@ End Style css Security
         height: 60px;
     }
 }
-.content__number{
-    background-image: url('../../public/images/banner/switch.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-    background-color: rgba(0,0,0,.5);
-}
+
 /*STYLE LOGIN*/
 .login,.register{
     background-image: url('../../public/images/banner/server.jpg');

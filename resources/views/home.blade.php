@@ -6,13 +6,13 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 header__content">
                 
-                <h1 class="my-3 text-light title-1">Obtener cuentas <span>SSH premium y gratis </span>, para accesos a VPN</h1>
-                <h3 class="mb-3 text-info">Conexión rápida y acceso a páginas bloqueadas.</h3>
-                <a href="{{ route('service.all') }}" class="btn btn-outline-info header__btn">COMENZAR!!</a>
+                <h1 class="my-3 title-1">Obtener cuentas <span>SSH premium y gratis </span>, para accesos a VPN</h1>
+                <h3 class="mb-3 text-description">Conexión rápida y acceso a páginas bloqueadas.</h3>
+                <a href="{{ route('service.all') }}" class="btn btn-outline-info header__btn mt-3">COMENZAR!!</a>
                 
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center header__img">
-                <img class="header__img" src="{{ asset('images/vpn-network.png') }}" alt="vpn network">
+                <img class="header__img" src="{{ asset('images/phone-test.png') }}" alt="vpn network">
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
 </section>
 
 <section class="section__information">
-    <h2></h2>
+
     <div class="container">
         <h2 class="text-center title-2 mb-4 pb-3">Funciones que te brindamos!!</h2>
         <div class="row">
@@ -71,7 +71,7 @@
     
                     <div class="card-body">
                         <h3 class="text-center">Conexión mas rápida</h3>
-                        <p class="text-center">Nuestros servicios de SSH VPN hace que su velocidad de Internet sea más rápida con un PING muy pequeño.</p>
+                        <p class="text-center">Nuestros servicios hacen que su velocidad de Internet sea más rápida con un PING muy pequeño.</p>
                     </div>
                 </div>
             </div>
@@ -80,10 +80,17 @@
 </section>
 
 <div class="security">
-    <div class="container security__container">
+    <div class="container">
         <div class="security__content">
-            <h2 class="title-2">Servicio de conectividad segura</h2>
-            <p>Nuestro servidor tiene conectividad segura para navegar en internet. Esto hace que el proceso de conexión sea anónimo sin compartir ninguna información privada mientras se conecta con otros dispositivos a través de la conexión a Internet.</p>
+            <div class="security__info-left">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJdJREFUSEvtk9ENgCAMRB+TOIK6iaPoBDqSo+gGOomGRBIgEiRV4gd8kbS9ttc7xcdPfYxP1gYdMAKNcKsNGIBZ49gb6EAlBDflC9D6DY4rKqXNwbHBUhvY+aG/Q9HvGoTOFaTozSOvRo32DbRMJ6AWKmkH+juZCnHvy6WSjA7lU1ScrCkrTo4Kpzg5SpGTkNXJaaM9zD4BSXUsGU/pTXAAAAAASUVORK5CYII="/>
+                <h2 class="title-2 mb-4">Seguridad de conexion</h2>
+                
+                <p>Nuestro servidor tiene conectividad segura para navegar en internet. Esto hace que el proceso de conexión sea anónimo sin compartir ninguna información privada mientras se conecta con otros dispositivos a través de la conexión a Internet.</p>
+            </div>
+            <div class="security__img-right">
+               <img src="{{ asset('images/icons/vpn-red.png') }}" alt="">
+            </div>
         </div>
     </div>
 </div>
