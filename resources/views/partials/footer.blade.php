@@ -13,10 +13,9 @@
             </div>
             <div class="col-12 col-sm-12 col-md-4 mb-4">
                 <h3 class=" footer__title">Estadisticas e información</h3>
-                <ul class="m-0 p-4">
-                    <li><p class="footer__text">Cuentas totales: 100k</p></li>
-                    <li><p class="footer__text">Registrados: 300</p></li>
-                </ul>
+                <p class="footer__text m-0">Cuentas totales: 100k</p>
+                <p class="footer__text">Registrados: 300</p>
+                
             </div>
             <div class="col-12 col-sm-12 col-md-4">
                 <h3 class=" footer__title">Otros servicios</h3>
