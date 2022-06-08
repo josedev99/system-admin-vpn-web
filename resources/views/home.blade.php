@@ -84,7 +84,7 @@
         <div class="security__content">
             <div class="security__info-left">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJdJREFUSEvtk9ENgCAMRB+TOIK6iaPoBDqSo+gGOomGRBIgEiRV4gd8kbS9ttc7xcdPfYxP1gYdMAKNcKsNGIBZ49gb6EAlBDflC9D6DY4rKqXNwbHBUhvY+aG/Q9HvGoTOFaTozSOvRo32DbRMJ6AWKmkH+juZCnHvy6WSjA7lU1ScrCkrTo4Kpzg5SpGTkNXJaaM9zD4BSXUsGU/pTXAAAAAASUVORK5CYII="/>
-                <h2 class="title-2 mb-4">Seguridad de conexion</h2>
+                <h2 class="title-2 mb-4">Seguridad de conexión</h2>
                 
                 <p>Nuestro servidor tiene conectividad segura para navegar en internet. Esto hace que el proceso de conexión sea anónimo sin compartir ninguna información privada mientras se conecta con otros dispositivos a través de la conexión a Internet.</p>
             </div>
