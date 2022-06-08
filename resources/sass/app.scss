@@ -241,6 +241,7 @@ End Style css Security
 .footer__list li{
     list-style: none;
     font-size: 1rem;
+    color: #5f6578;
 }
 .footer__list li i{
     padding-right: 10px;
@@ -257,13 +258,13 @@ End Style css Security
 @media screen and (max-width: 760px){
     .footer__title{
         text-align: left !important;
-        color: #dddada;
+        color: #414655;
     }
 }
 /* STYLE SERVIDORES*/
 .server__content{
     padding: 4rem 0px;
-    background: #f1f1f1;
+    background: #5f6578;
 }
 .card__server{
     height: 100%;
