@@ -7,7 +7,7 @@
         <div class="tile-body">
           <div class="table-responsive">
             @if (count($getUsersAll) > 0)
-            <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+            <table class="table table-hover table-bordered dataTable no-footer" id="table-allUser" role="grid" aria-describedby="sampleTable_info">
                 <thead>
                   <tr role="row"><th>User</th><th>Passwd</th>
                     <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 114.188px;">Tipo</th>
@@ -28,7 +28,6 @@
                       </tr></tbody>
                     @endforeach  
               </table>
-              {{ $getUsersAll->links() }}
             @else
               <h4>¡No hay usuario creados!</h4>
             @endif
@@ -37,4 +36,8 @@
       </div>
     </div>
   </div>
+  <script>
+    //USE DATATABLES  
+    var tableServer = new DataTable("#table-allUser");
+  </script>
 @endsection

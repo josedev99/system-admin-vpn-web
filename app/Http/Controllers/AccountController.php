@@ -56,8 +56,7 @@ class AccountController extends Controller
     public function showAllAccounts(){
         $getUsersAll = DB::table('servers')->
             join('accounts','servers.id','=','accounts.server_id')->
-            orderBy('accounts.id','desc')->
-            paginate(10);
+            orderBy('accounts.id','desc')->get();
         return view('panel.ssh.all',compact('getUsersAll'));
     }
 

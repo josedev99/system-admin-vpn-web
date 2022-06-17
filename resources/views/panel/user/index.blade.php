@@ -13,8 +13,8 @@
 </script>
 
 <div class="tile">
-    <h3 class="tile-title">Server</h3>
-    <table class="table table-striped table-bordered dataTable no-footer table-responsive-sm">
+    <h3 class="tile-title">Usuarios</h3>
+    <table class="table table-striped table-bordered dataTable no-footer table-responsive-sm" id="table-user">
       <thead>
         <tr>
           <th>#</th>
@@ -69,6 +69,10 @@
           @endforeach
         </tbody>
       </table>
-      {{ $getUsersAll->links() }}
   </div>
+
+<script>
+  //DataTables
+  var tableUser = new DataTable("#table-user");
+</script>
 @endsection

@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $getUsersAll = User::paginate(10);
+        $getUsersAll = User::all();
         return view('panel.user.index',compact('getUsersAll'));
     }
 

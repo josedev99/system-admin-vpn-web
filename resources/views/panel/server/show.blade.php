@@ -14,7 +14,7 @@
 @include('panel.partials.alert')
 <div class="tile">
     <h3 class="tile-title">Server</h3>
-    <table class="table table-striped table-bordered dataTable no-footer table-responsive-sm">
+    <table class="table table-striped table-bordered dataTable no-footer table-responsive-sm" id="table-server">
       <thead>
         <tr>
           <th>#</th>
@@ -59,4 +59,9 @@
       </tbody>
     </table>
   </div>
+
+  <script>
+    //USE DATATABLES  
+    var tableServer = new DataTable("#table-server");
+  </script>
 @endsection
