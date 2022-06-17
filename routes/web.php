@@ -32,9 +32,9 @@ Route::delete('/panel/lista-server/{id}','ServerController@destroy')->name('serv
 Route::get('/panel/ventas','SalesController@show')->name('sales.show')->middleware('auth');
 
 //Add server
-Route::get('/panel/add-server','PanelController@addServer')->name('addServer');
+Route::get('/panel/add-server','ServerController@addServer')->name('addServer');
 
-Route::post('/panel','PanelController@saveServer')->name('saveServer');
+Route::post('/panel','ServerController@saveServer')->name('saveServer');
 
 //SSH account
 Route::get('/panel/cuentas-ssh','AccountController@showSSH')->name('showSSH')->middleware('auth');

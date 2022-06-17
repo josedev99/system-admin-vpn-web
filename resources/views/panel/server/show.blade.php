@@ -36,7 +36,7 @@
             <td>{{ $item->type }}</td>
             <td>{{ $item->domain }}</td>
             <td>
-              @if (Auth::user()->id == $item->user_id)    
+              @if (Auth::user()->id == $item->user_id || Auth::user()->rol_id == 1)    
               
               
               <div class="d-flex">

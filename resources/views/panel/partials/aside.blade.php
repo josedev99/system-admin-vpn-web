@@ -22,13 +22,15 @@
             @endif
           </ul>
         </li>
-        @if (Auth::user()->rol_id == 1)
+        @if (Auth::user()->rol_id == 1 || Auth::user()->rol_id = 3)
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Server</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
               <li><a class="treeview-item" href="{{ route('addServer') }}"><i class="icon fa fa-circle-o"></i>Crear</a></li>
               <li><a class="treeview-item" href="{{ route('server.show') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>
             </ul>
           </li>
+          @endif
+          @if (Auth::user()->rol_id == 1)
           <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Ganancias</span><i class="treeview-indicator fa fa-angle-right"></i></a>
               <ul class="treeview-menu">
                 <li><a class="treeview-item" href="{{ route('sales.show') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>

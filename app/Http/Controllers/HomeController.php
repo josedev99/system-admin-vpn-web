@@ -40,14 +40,14 @@ class HomeController extends Controller
     {
         $id = $protocol->id;
         $data = server::where('service_id',$id)->get();
-        return view('account',compact('data'));
+        return view('server',compact('data'));
     }
 
     public function premiumUsa1($id){
         $server = DB::table('services')->join('servers','services.id','=','servers.service_id')->
             where('servers.id','=',$id)->get();
         
-        return view('premium-usa1',compact('server'));
+        return view('formAccount',compact('server'));
     }
     public function termino(){
         return view('terminos');
