@@ -7,12 +7,14 @@
         <div class="tile-body">
           <div class="table-responsive">
             @if (count($getUsersAll) > 0)
-            <table class="table table-hover table-bordered dataTable no-footer" id="table-allUser" role="grid" aria-describedby="sampleTable_info">
+            <table class="table table-hover table-bordered" id="table-allUser">
                 <thead>
                   <tr role="row"><th>User</th><th>Passwd</th>
-                    <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 114.188px;">Tipo</th>
-                    <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 114.188px;">Creado</th><th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 52.3594px;">Expire</th><th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 104.703px;">Dominio</th>
-                    <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 104.703px;">ID Usuario</th>
+                    <th">Tipo</th>
+                    <th>Creado</th>
+                    <th>Expire</th>
+                    <th>Dominio</th>
+                    <th>ID Usuario</th>
                   </tr>
                 </thead>
                 <tbody>
