@@ -25,14 +25,12 @@
             </td>
             <td>
                 
-              <a href="{{ route('service.destroy',$item) }}" class="btn btn-outline-danger btn-sm" onclick="event.preventDefault();
-              document.getElementById('delete-form').submit();">Delete</a>
               <a href="{{ route('service.edit',$item) }}" class="btn btn-outline-info btn-sm">Update</a>
 
               <form id="delete-form" action="{{ route('service.destroy',$item) }}" method="POST">
                   @method('DELETE')
                   @csrf
-                  
+                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
               </form>
               
             </td>

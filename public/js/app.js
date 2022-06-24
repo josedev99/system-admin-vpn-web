@@ -37330,6 +37330,14 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/*CODE MODAL*/
+
+
+var modalClose = document.querySelector('.close');
+var modal = document.querySelector('.modal');
+modalClose.addEventListener('click', function () {
+  modal.classList.toggle('close');
+});
 
 /***/ }),
 

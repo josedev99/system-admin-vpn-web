@@ -11410,3 +11410,20 @@ End Style css Security
   background-color: rgba(29, 48, 88, 0.7);
 }
 
+/*STYLE MODAL*/
+
+.modal {
+  position: fixed;
+  display: inline-block;
+}
+
+.modal.close {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 100%;
+  }
+}
+
