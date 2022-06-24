@@ -24,15 +24,15 @@
                 <img src="{{ asset('storage/'.$item->flag) }}" height="30" alt="">
             </td>
             <td>
-                
-              <a href="{{ route('service.edit',$item) }}" class="btn btn-outline-info btn-sm">Update</a>
+              <div class="row">
+                <a href="{{ route('service.edit',$item) }}" class="btn btn-outline-info btn-sm mx-2">Update</a>
 
-              <form id="delete-form" action="{{ route('service.destroy',$item) }}" method="POST">
-                  @method('DELETE')
-                  @csrf
-                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-              </form>
-              
+                <form id="delete-form" action="{{ route('service.destroy',$item) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </div>
             </td>
           </tr>
           @endforeach
