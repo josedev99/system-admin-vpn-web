@@ -9,17 +9,20 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body text-center d-flex flex-column justify-content-center">
             <h5><img src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/58/000000/external-premium-black-friday-5-sbts2018-outline-color-sbts2018.png"/></h5>
             <h5>Beneficios: </h5>
-            <ul>
-                <li>Acceso a servidor privado</li>
-                <li>Acceso a 5 conexiones</li>
-                <li>Cuenta SSH personal</li>
-            </ul>
-            <a class="btn btn-success btn-sm shadow-lg" href="https://hive-vpn.tk/create-server/13">Comprar aquí</a>
+            <div class="modal__info text-left">
+                <ul>
+                    <li>Acceso a servidor privado</li>
+                    <li>Acceso a 5 conexiones</li>
+                    <li>Cuenta SSH personal</li>
+                </ul>
+            </div>
+            
+            <a class="btn btn-success btn-sm shadow-lg btn-block" href="https://hive-vpn.tk/create-server/13">Comprar aquí</a>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
             <h5>Métodos de pago: </h5>
             <img src="https://img.icons8.com/color/48/000000/paypal.png"/>
         </div>
