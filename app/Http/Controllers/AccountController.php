@@ -60,8 +60,10 @@ class AccountController extends Controller
     }
 
     public function command_ssh($user,$passwd,$date){
-        $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
-
+        //$comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
+        //Limite de conexiones simultaneas
+        $conection_limit = session('conection_limit');
+        $comand = 'bash adduser.sh '.$date.' '.$passwd.' '.$user.' '.$conection_limit;
         $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
         stream_set_blocking( $stream, true );
  

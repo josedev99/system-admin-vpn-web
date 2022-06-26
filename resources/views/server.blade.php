@@ -25,6 +25,8 @@
                     <tr><td>Websocket+SSL</td><td>: <b>443</b></td></tr>
                     <tr><td>Websocket</td><td>: <b>80</b></td></tr>
                     <tr><td>UDP</td><td>: <b>7300</b></td></tr>
+                    <tr><td>Conexiones simult</td><td>: <b>{{$item->limit}}</b></td></tr>
+                    
                     </tbody></table>
                     <hr>
                     <div class="d-flex justify-content-between">

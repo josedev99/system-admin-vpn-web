@@ -19,6 +19,7 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">SSH SSL/TLS Port: <b>443</b></li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">SSH WebSocket: <b>80</b></li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">UDPGW Port: <b>7300</b></li>
+                
                 </ul>
                 <b>Payload</b>
                 <textarea id="ssClipboard" class="form-control mb-2" rows="3" style="font-size: 14px;">{{ $resp_data->payload }}</textarea>

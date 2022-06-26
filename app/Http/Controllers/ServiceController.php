@@ -90,7 +90,7 @@ class ServiceController extends Controller
         ]);
 
         if (request()->hasFile('flag')) {
-            Storage::delete('public/' . $service['image']);
+            Storage::delete('public/' . $service['flag']);
             $data['flag'] = $request->file('flag')->store('imagesFlag', 'public');
         }
         $service->update($data);
