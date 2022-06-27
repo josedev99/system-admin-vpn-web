@@ -67,7 +67,7 @@ Route::get('/user/password/edit','resetPasswordController@password_edit')->name(
 Route::post('/user/password/update','resetPasswordController@password_update')->name('password.update');
 
 //RUTAS PARA RECARGAR SALDO
-Route::get('/recarga','SaldoController@index')->name('saldo.index');
+Route::get('/recarga','SaldoController@index')->name('saldo.index')->middleware('auth');
 Route::post('/checkout', 'PaymentController@createPayment')->name('create-payment')->middleware('auth');
 Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment')->middleware('auth');
 /*TESTING VIEWMAIL*/

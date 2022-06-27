@@ -29,8 +29,10 @@ class HomeController extends Controller
     public function index()
     {
         //Obtiene el saldo final de su cuenta
-        $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
-        session(['saldoDisponible' => $getSaldo]);
+        if(isset(auth()->user()->id)){
+            $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+            session(['saldoDisponible' => $getSaldo]);
+        }
 
         $getServersAll = server::all()->count();
         $getAccountsAll = account::all()->count();
