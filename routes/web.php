@@ -15,11 +15,14 @@ Route::get('services','ServerController@serverAll')->name('service.all');
 
 //WEBSOCKET
 Route::get('/create-server/{id}', 'HomeController@premiumUsa1')->name('create-server');
-ROute::post('create-server/{id}','AccountController@WS_USA1')->name('ws_prem_usa1');
+ROute::post('create-server','AccountController@WS_USA1')->name('ws_free');
+ROute::post('create-server/premium','AccountController@WS_Premium')->name('ws_premium');
 //V2RAY
-ROute::post('v2ray/{id}','v2rayController@v2rayCore')->name('v2ray');
-Route::post('/checkout/v2ary', 'paymentV2rayController@createPayment')->name('create-payment-v2ray')->middleware('auth');
-Route::get('/confirm/v2ray', 'paymentV2rayController@confirmPayment')->name('confirm-payment-v2ray')->middleware('auth');
+ROute::post('v2ray','v2rayController@v2rayCore')->name('v2ray');
+Route::post('/v2ray/premium', 'v2rayController@v2ray_premium')->name('create-payment-v2ray')->middleware('auth');
+
+//Route::post('/checkout/v2ary', 'paymentV2rayController@createPayment')->name('create-payment-v2ray')->middleware('auth');
+//Route::get('/confirm/v2ray', 'paymentV2rayController@confirmPayment')->name('confirm-payment-v2ray')->middleware('auth');
 //Routes panel ///GENERAL
 
 Route::get('/panel','PanelController@index')->name('panel');
@@ -40,10 +43,6 @@ Route::post('/panel','ServerController@saveServer')->name('saveServer');
 Route::get('/panel/cuentas-ssh','AccountController@showSSH')->name('showSSH')->middleware('auth');
 Route::get('/panel/cuentas-full','AccountController@showAllAccounts')->name('allSSH')->middleware('auth');
 
-// route for processing payment
-Route::view('/checkout', 'home')->middleware('auth');
-Route::post('/checkout', 'PaymentController@createPayment')->name('create-payment')->middleware('auth');
-Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment')->middleware('auth');
 
 //Rutas de usuario
 
@@ -67,7 +66,10 @@ Route::post('/user/password/reset','resetPasswordController@password_reset')->na
 Route::get('/user/password/edit','resetPasswordController@password_edit')->name('password.edit');
 Route::post('/user/password/update','resetPasswordController@password_update')->name('password.update');
 
-
+//RUTAS PARA RECARGAR SALDO
+Route::get('/recarga','SaldoController@index')->name('saldo.index');
+Route::post('/checkout', 'PaymentController@createPayment')->name('create-payment')->middleware('auth');
+Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment')->middleware('auth');
 /*TESTING VIEWMAIL*/
 
 /*

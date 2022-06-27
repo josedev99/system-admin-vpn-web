@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\account;
+use App\saldo;
 use App\sales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,41 +41,45 @@ class PaymentController extends Controller
     {
         // Amount received as request is validated here.
         $request->validate(['amount' => 'required|numeric']);
-        $pay_amount = session('price');
-        //Validate form
-        $this->validateDataForm();
-        //Request data
+        $pay_amount = $request->amount;
+        //Validation request
+        if(is_numeric($pay_amount)){
+            if($pay_amount < 0){
+                return redirect()->back()->with('error','Error, no es un valor valido.');
+            }
+        }else{
+            return redirect()->back()->with('error','Error, no es un valor valido.');
+        }
         session([
-                'user' => request()->user,
-                'passwd' => request()->passwd
+            'pay_amount' => $pay_amount
         ]);
-// We create the payer and set payment method, could be any of "credit_card", "bank", "paypal", "pay_upon_invoice", "carrier", "alternate_payment". 
+        // We create the payer and set payment method, could be any of "credit_card", "bank", "paypal", "pay_upon_invoice", "carrier", "alternate_payment". 
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-// Create and setup items being paid for.. Could multiple items like: 'item1, item2 etc'.
+        // Create and setup items being paid for.. Could multiple items like: 'item1, item2 etc'.
         $item = new Item();
         $item->setName('Paypal Payment')->setCurrency('USD')->setQuantity(1)->setPrice($pay_amount);
-// Create item list and set array of items for the item list.
+        // Create item list and set array of items for the item list.
         $itemList = new ItemList();
         $itemList->setItems(array($item));
-// Create and setup the total amount.
+        // Create and setup the total amount.
         $amount = new Amount();
         $amount->setCurrency('USD')->setTotal($pay_amount);
-// Create a transaction and amount and description.
+        // Create a transaction and amount and description.
         $transaction = new Transaction();
         $transaction->setAmount($amount)->setItemList($itemList)
-        ->setDescription('Compra de usuario SSH a hive-vpn.tk');
+        ->setDescription('Recarga de saldo a hive-vpn.tk');
         //You can set custom data with '->setCustom($data)' or put it in a session.
-// Create a redirect urls, cancel url brings us back to current page, return url takes us to confirm payment.
+        // Create a redirect urls, cancel url brings us back to current page, return url takes us to confirm payment.
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(route('confirm-payment'))
         ->setCancelUrl(url()->current());
-// We set up the payment with the payer, urls and transactions.
+        // We set up the payment with the payer, urls and transactions.
         // Note: you can have different itemLists, then different transactions for it.
         $payment = new Payment();
         $payment->setIntent('Sale')->setPayer($payer)->setRedirectUrls($redirect_urls)
         ->setTransactions(array($transaction));
-// Put the payment creation in try and catch in case of exceptions.
+        // Put the payment creation in try and catch in case of exceptions.
         try {
             $payment->create($this->api_context);
         } catch (PayPalConnectionException $ex){
@@ -82,7 +87,7 @@ class PaymentController extends Controller
         } catch (Exception $ex) {
             return back()->withError('Some error occur, sorry for inconvenient');
         }
-// We get 'approval_url' a paypal url to go to for payments.
+        // We get 'approval_url' a paypal url to go to for payments.
         foreach($payment->getLinks() as $link) {
             if($link->getRel() == 'approval_url') {
                 $redirect_url = $link->getHref();
@@ -118,71 +123,18 @@ class PaymentController extends Controller
         // $value = $request->session()->pull('key', 'default');
 // Check if payment is approved
         if ($result->getState() != 'approved'){
-                return redirect()->route('ssh-create',session('server_id'))->withError('El pago no fue exitoso.');
+                return redirect()->back()->withError('El pago no fue exitoso.');
         }
-        //PROCESS ACCOUNT CREATED
-            
-            $validateUser = account::where('user','=',session('user'))->get();
-            if(count($validateUser) > 0){
-                return redirect()->back()->with('status','El usuario ya existe!');
-            }
-            
-        
-            $fecha_actual = date("Y-m-d");   
-            
-            $resp = account::create([
-                'user' => session('user'),
-                'passwd' => session('passwd'),
-                'sni' => '',
-                'created' => $fecha_actual,
-                'expire' => get_days(),
-                'user_id' => auth()->user()->id,
-                'server_id' => session('server_id'),
-                'status' => 1
-            ]);
-            $getUserAll = DB::table('servers')->
-                join('accounts','servers.id','=','accounts.server_id')->
-                where('accounts.id',$resp->id)->
-                get();
-            $resp_data = $getUserAll[0];
-
-            //SALES INSERT DATA
-            sales::create([
-                'user_id' => auth()->user()->id,
-                'total' => session('price'),
-                'date' => $fecha_actual,
-                'paypal_data' => $request->query('paymentId'),
-                'account_id' => $resp_data->id
-            ]);
-            //Create user a server ssh
-            $this->command_ssh(session('user'), session('passwd'),get_days());
-            
-            return view('view_account',compact('resp_data'));
-            
-    }
-    public function validateDataForm(){
-        $data = request()->validate([
-                'user' => "required",
-                'passwd' => "required",
-                'g-recaptcha-response' => 'recaptcha'
+        //Proccess a recarga
+        saldo::create([
+            'saldo' => session('pay_amount'),
+            'user_id' => auth()->user()->id
         ]);
-        return $data;
-    }
-    public function command_ssh($user,$passwd,$date){
-        $comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
-
-        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
-        stream_set_blocking( $stream, true );
- 
-        $data = "";
-        
-        while( $buf = fread($stream,4096) ){
-        
-        $data .= $buf;
-        //Output uuid
-        echo $buf;
-        
-        } 
-        fclose($stream);
+        //Obtiene el saldo final de su cuenta
+        $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+        session(['saldoDisponible' => $getSaldo]);
+            
+        return redirect()->back()->with('success','!!Se ha aplicado la recarga a tu cuenta!!');
+            
     }
 }

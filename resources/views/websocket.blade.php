@@ -16,9 +16,9 @@
             <h5 class="py-3 text-center m-0 p-0">Crear nueva cuenta</h5>
             <div class="card-body">
                 @if ($server[0]->type == "premium")
-                    <form id="form" method="POST" action="{{ route('create-payment') }}">
+                    <form id="form" method="POST" action="{{ route('ws_premium',request()->id) }}">
                 @else
-                    <form id="form" method="POST" action="{{ route('ws_prem_usa1',request()->id) }}">
+                    <form id="form" method="POST" action="{{ route('ws_free',request()->id) }}">
                 @endif
                 @csrf
                 <div class="form-group">
@@ -42,16 +42,17 @@
                         'conection_limit' => $server[0]->limit
                     ]) }}
                     @auth
-                    @if ($server[0]->type == "premium")
-                    
-                    
-                        <input name="amount" placeholder="Amount" value="{{ $server[0]->price }}" type="hidden">
+                        @if ($server[0]->type == "premium")
+                            @if (session('saldoDisponible') >= $server[0]->price)
                         
-                        <button type="submit" class="btn btn-outline-success btn-block">COMPRAR</button>
+                                <button type="submit" class="btn btn-outline-success btn-block">COMPRAR</button>
+                            @else
+                                <a href="{{ route('saldo.index') }}" class="btn btn-outline-success btn-block">RECARGAR</a>
+                            @endif
                         @else
-                        <button type="submit" class="btn btn-outline-success btn-block">CREAR</button>
+                            <button type="submit" class="btn btn-outline-success btn-block">CREAR</button>
                         @endif
-                        @else
+                    @else
                         <a class="btn btn-outline-secondary btn-block" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 
                     @endauth

@@ -10926,6 +10926,14 @@ p {
   color: #f2f2f9;
 }
 
+.btn__saldo {
+  padding: 8px 20px;
+}
+
+.badge {
+  font-size: 0.8rem;
+}
+
 .title-1 {
   font-family: "Poppins", sans-serif !important;
   font-weight: 700;

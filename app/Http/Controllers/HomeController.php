@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\account;
+use App\saldo;
 use App\server;
 use App\Service;
 use Illuminate\Http\Request;
@@ -27,9 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Obtiene el saldo final de su cuenta
+        $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+        session(['saldoDisponible' => $getSaldo]);
+
         $getServersAll = server::all()->count();
         $getAccountsAll = account::all()->count();
-
         $getServiceAll = Service::all();
         $numberServer = DB::table('services')->
             join('servers','services.id','servers.service_id')->count();

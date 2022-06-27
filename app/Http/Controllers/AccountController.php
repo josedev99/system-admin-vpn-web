@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\account;
+use App\saldo;
+use App\sales;
 use App\server;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
-    public function WS_USA1($id){
+    public function WS_USA1(){
         
         $data = request()->validate([
             'user' => "required",
@@ -32,7 +34,7 @@ class AccountController extends Controller
             'created' => $fecha_actual,
             'expire' => get_days(),
             'user_id' => auth()->user()->id,
-            'server_id' => $id,
+            'server_id' => session('server_id'),
             'status' => 1
         ]);
         $getUserAll = DB::table('servers')->
@@ -46,6 +48,58 @@ class AccountController extends Controller
         
         return view('view_account',compact('resp_data'));
     }
+    public function WS_Premium(){
+        
+        $data = request()->validate([
+            'user' => "required",
+            'passwd' => "required",
+            'g-recaptcha-response' => 'recaptcha'
+        ]);
+        //Validation data
+        $validateUser = account::where('user','=',$data['user'])->get();
+        if(count($validateUser) > 0){
+            return redirect()->back()->with('status','El usuario ya existe!');
+        }
+        
+        $fecha_actual = date("Y-m-d");   
+        
+        $resp = account::create([
+            'user' => $data['user'],
+            'passwd' => $data['passwd'],
+            'sni' => '',
+            'created' => $fecha_actual,
+            'expire' => get_days(),
+            'user_id' => auth()->user()->id,
+            'server_id' => session('server_id'),
+            'status' => 1
+        ]);
+        $getUserAll = DB::table('servers')->
+            join('accounts','servers.id','=','accounts.server_id')->
+            where('accounts.id',$resp->id)->
+            get();
+        $resp_data = $getUserAll[0];
+        //Create user a server ssh
+        
+        $this->command_ssh($resp->user, $resp->passwd,get_days());
+        
+        
+        //Descontamos su saldo actual
+        $user_saldo = saldo::find(auth()->user()->id);
+        $user_saldo->decrement('saldo',session('price'));
+        //Obtiene el saldo final de su cuenta
+        $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+        session(['saldoDisponible' => $getSaldo]);
+        sales::create([
+            'user_id' => auth()->user()->id,
+            'total' => session('price'),
+            'date' => $fecha_actual,
+            'paypal_data' => 'saldo virtual',
+            'account_id' => $resp->id
+        ]);
+        
+        return view('view_account',compact('resp_data'));
+    }
+
     public function showSSH(){
         $getUsersAll = DB::table('servers')->
             join('accounts','servers.id','=','accounts.server_id')->

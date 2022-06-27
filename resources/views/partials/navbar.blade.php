@@ -49,6 +49,9 @@
                             </form>
                         </div>
                     </li>
+                    <a href="{{ route('saldo.index') }}" class="btn btn-primary btn__saldo">
+                        Saldo <span class="badge badge-light">${{ session('saldoDisponible') }}</span>
+                    </a>
                 @endguest
             </ul>
         </div>
