@@ -78,17 +78,14 @@ class AccountController extends Controller
             where('accounts.id',$resp->id)->
             get();
         $resp_data = $getUserAll[0];
-        //Create user a server ssh
-        
-        $this->command_ssh($resp->user, $resp->passwd,get_days());
-        
         
         //Descontamos su saldo actual
-        $user_saldo = saldo::find(auth()->user()->id);
-        $user_saldo->decrement('saldo',session('price'));
-        //Obtiene el saldo final de su cuenta
         $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
-        session(['saldoDisponible' => $getSaldo]);
+        $getSaldo -= session('price');
+        saldo::where('user_id','=',auth()->user()->id)->update(['saldo' => $getSaldo]); //Update saldo
+        //Obtiene el saldo final de su cuenta
+        $getSaldoTotal = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+        session(['saldoDisponible' => $getSaldoTotal]);
         sales::create([
             'user_id' => auth()->user()->id,
             'total' => session('price'),
@@ -96,6 +93,9 @@ class AccountController extends Controller
             'paypal_data' => 'saldo virtual',
             'account_id' => $resp->id
         ]);
+        
+        //Create user a server ssh
+        $this->command_ssh($resp->user, $resp->passwd,get_days());
         
         return view('view_account',compact('resp_data'));
     }

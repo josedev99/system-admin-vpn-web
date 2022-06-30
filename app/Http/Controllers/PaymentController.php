@@ -126,13 +126,22 @@ class PaymentController extends Controller
                 return redirect()->back()->withError('El pago no fue exitoso.');
         }
         //Proccess a recarga
-        saldo::create([
-            'saldo' => session('pay_amount'),
-            'user_id' => auth()->user()->id
-        ]);
+        //Comprobación de saldo
+        $clientExists = saldo::where('user_id','=',auth()->user()->id)->count();
+        if($clientExists > 0){
+            $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+            $getSaldo += session('pay_amount');
+            saldo::where('user_id','=',auth()->user()->id)->update(['saldo' => $getSaldo]);
+        }else{
+            //Se crea su saldo inicial
+            saldo::create([
+                'saldo' => session('pay_amount'),
+                'user_id' => auth()->user()->id
+            ]);
+        }
         //Obtiene el saldo final de su cuenta
-        $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
-        session(['saldoDisponible' => $getSaldo]);
+        $getSaldoTotal = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+        session(['saldoDisponible' => $getSaldoTotal]);
             
         return redirect()->back()->with('success','!!Se ha aplicado la recarga a tu cuenta!!');
             

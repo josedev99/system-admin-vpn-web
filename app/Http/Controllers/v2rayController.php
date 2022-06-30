@@ -109,8 +109,10 @@ class v2rayController extends Controller
             'account_id' => $resp->id
         ]);
         //Descontamos su saldo actual
-        $user_saldo = saldo::find(auth()->user()->id);
-        $user_saldo->decrement('saldo',session('price'));
+        $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+        $getSaldo -= session('price');
+        saldo::where('user_id','=',auth()->user()->id)->update(['saldo' => $getSaldo]); //Update saldo
+
         //Obtiene el saldo final de su cuenta
         $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
         session(['saldoDisponible' => $getSaldo]);
