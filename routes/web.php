@@ -79,6 +79,6 @@ Route::get('mail', function (){
 */
 /*NEW RUTAS PARA AGREGAR VISTA DE CUENTAS PREMIUM*/
 
-Route::get('/panel/cuentas-premium','AccountController@showPremiumSSH')->name('sshPremium');
-Route::get('/panel/cuentas-premium/{ip}/{user}','AccountController@renewSSH')->name('renovarSSH');
-Route::post('/panel/cuentas-premium/{ip}','AccountController@updateSSH')->name('updateSSH');
+Route::get('/panel/cuentas-premium','AccountController@showPremiumSSH')->name('sshPremium')->middleware('auth');
+Route::get('/panel/cuentas-premium/{ip}/{user}','AccountController@renewSSH')->name('renovarSSH')->middleware('auth');
+Route::post('/panel/cuentas-premium/{ip}','AccountController@updateSSH')->name('updateSSH')->middleware('auth');
