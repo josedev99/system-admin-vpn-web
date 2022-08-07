@@ -112,13 +112,75 @@ class AccountController extends Controller
             orderBy('accounts.id','desc')->get();
         return view('panel.ssh.all',compact('getUsersAll'));
     }
+    //New function 
+    public function showPremiumSSH(){
+        $getSSHPremium = DB::table('servers')
+            ->join('accounts','servers.id','=','accounts.server_id')
+            ->where('accounts.user_id','=',auth()->user()->id)
+            ->orderBy('accounts.id','desc')
+            ->get();
 
-    public function command_ssh($user,$passwd,$date){
+        return view('panel.ssh.premium', compact('getSSHPremium'));
+    }
+    //New function
+    public function renewSSH($id){
+        return view('panel.ssh.renovar');
+    }
+    //Function renew ssh update
+    public function updateSSH(){
+        $server_data = server::where('ip','=',request()->ip)->get();
+        session([
+            'host' => $server_data[0]->ip,
+            'vps_user' => $server_data[0]->vps_user,
+            'vps_passwd' => $server_data[0]->vps_passwd,
+            'days' => request()->days
+        ]);
+        //Validation payment
+        $payment = 0;
+        switch(request()->days){
+            case 16:
+                $payment = 2;
+                break;
+            case 32:
+                $payment = 4;
+                
+                break;
+            case 61:
+                $payment = 9;
+                
+                break;
+        }
+        $getSaldoTotal = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
+        if($getSaldoTotal >= $payment){
+            //Update saldo
+            $getSaldoTotal -= $payment;
+            saldo::where('user_id','=',auth()->user()->id)->update(['saldo' => $getSaldoTotal]);
+            session(['saldoDisponible' => $getSaldoTotal]);
+            //Continue code
+            account::where('user','=',request()->user)->update([
+                "expire" => get_days()
+            ]);
+    
+            $command = 'bash updateUser.sh '.get_days().' '.request()->user;
+    
+            $this->command_ssh('','',get_days(),$command);
+    
+            return redirect()->route('sshPremium')->with('success','Cuenta SSH actualizado!!');
+
+        }else{
+            return redirect()->route('sshPremium')->with('error','Saldo insufiente');
+        }
+    }
+
+    public function command_ssh($user,$passwd,$date, $command = ''){
         //$comand = 'useradd -e '.$date.' -p "$(mkpasswd --method=sha-512 '.$passwd.')" '.$user;
         //Limite de conexiones simultaneas
         $conection_limit = session('conection_limit');
-        $comand = 'bash adduser.sh '.$date.' '.$passwd.' '.$user.' '.$conection_limit;
-        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
+        if($command == ''){
+            $command = 'bash adduser.sh '.$date.' '.$passwd.' '.$user.' '.$conection_limit;
+        }
+
+        $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $command);
         stream_set_blocking( $stream, true );
  
         $data = "";

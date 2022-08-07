@@ -77,3 +77,8 @@ Route::get('mail', function (){
     return view('mails.reset_password');
 });
 */
+/*NEW RUTAS PARA AGREGAR VISTA DE CUENTAS PREMIUM*/
+
+Route::get('/panel/cuentas-premium','AccountController@showPremiumSSH')->name('sshPremium');
+Route::get('/panel/cuentas-premium/{ip}/{user}','AccountController@renewSSH')->name('renovarSSH');
+Route::post('/panel/cuentas-premium/{ip}','AccountController@updateSSH')->name('updateSSH');
