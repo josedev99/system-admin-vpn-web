@@ -150,7 +150,7 @@
             </div>
             <div class="col-12 col-sm-12 col-md-4 d-flex justify-content-center">
                 <div class="cirle__info server">
-                    <h3>10</h3>
+                    <h3>{{ $getTotalAccountDay }}</h3>
                     <h4>TODAY</h4>
                 </div>
             </div>

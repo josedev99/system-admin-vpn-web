@@ -11,6 +11,7 @@ Route::get('/terminos-condiciones', 'HomeController@termino')->name('termino'); 
 
 
 Route::get('/service/{name?}/{protocol?}', 'HomeController@accounts')->name('service');
+
 Route::get('services','ServerController@serverAll')->name('service.all');
 
 //WEBSOCKET

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Crear cuenta '.$server[0]->protocol)
 @section('content')
     @if ($server[0]->protocol == "websocket" || $server[0]->protocol == "WEBSOCKET" || $server[0]->protocol == "WebSocket")
         @include('websocket')

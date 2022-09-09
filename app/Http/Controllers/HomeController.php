@@ -6,6 +6,7 @@ use App\account;
 use App\saldo;
 use App\server;
 use App\Service;
+use App\TotalAccounts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,14 +34,17 @@ class HomeController extends Controller
             $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
             session(['saldoDisponible' => $getSaldo]);
         }
-
+        //Cantidad de servidores
         $getServersAll = server::all()->count();
-        $getAccountsAll = account::all()->count();
+        //Total de cuentas creadas
+        $getAccountsAll = TotalAccounts::sum('account_Number');
+        //Total de cuentas creadas por dia
+        $fecha_actual = date("Y-m-d");
+        $getTotalAccountDay = TotalAccounts::where('date_create',$fecha_actual)->sum('account_Number');
+        //Muestra los servidores
         $getServiceAll = Service::all();
-        $numberServer = DB::table('services')->
-            join('servers','services.id','servers.service_id')->count();
 
-        return view('home',compact('getServersAll','getAccountsAll','getServiceAll','numberServer'));
+        return view('home',compact('getServersAll','getAccountsAll','getServiceAll','getTotalAccountDay'));
     }
     public function accounts($name,Service $protocol)
     {

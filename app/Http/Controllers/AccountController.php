@@ -6,6 +6,7 @@ use App\account;
 use App\saldo;
 use App\sales;
 use App\server;
+use App\TotalAccounts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +37,11 @@ class AccountController extends Controller
             'user_id' => auth()->user()->id,
             'server_id' => session('server_id'),
             'status' => 1
+        ]);
+        //Contabilizador de cuentas
+        $insertedAccountsTotal = TotalAccounts::create([
+            "account_Number" => 1,
+            "date_create" => $fecha_actual
         ]);
         $getUserAll = DB::table('servers')->
             join('accounts','servers.id','=','accounts.server_id')->

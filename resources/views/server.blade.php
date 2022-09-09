@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Servidores Websocket')
 @section('content')
     <div class="banner__server">
         <div class="header__section-transparent d-flex flex-column justify-content-center align-items-center">
