@@ -144,7 +144,7 @@ class v2rayController extends Controller
         $replaceString = "";
         $uuid = str_replace($searchString,$replaceString,$genraUUID);
         //path v2ray
-        $path_last = "wss://".session('domain')."/hive-vpn.tk/";
+        $path_last = "wss://".session('sni')."/hive-vpn.tk/";
         $path = str_replace($searchString,$replaceString,$path_last);
         //V2ray nativo
         $vmessWSS = json_encode([ "v" => "2", "ps" => session('sni'),"sni" => session('sni'), "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => $path, "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
