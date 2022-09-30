@@ -41,7 +41,7 @@ class v2rayController extends Controller
         $resp_data = $getUserAll[0];
         
         //Create v2ray
-        $comand = "bash adduser.sh";
+        $comand = "bash addV2rayClient.sh ".'hive-vpn.tk-'.$data['user']." ".get_days();
         
         $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
         stream_set_blocking( $stream, true );
@@ -58,9 +58,16 @@ class v2rayController extends Controller
         $searchString = "\n";
         $replaceString = "";
         $uuid = str_replace($searchString,$replaceString,$genraUUID);
+        //path v2ray
+        $path_last = "wss://".session('domain')."/hive-vpn.tk/";
+        $path = str_replace($searchString,$replaceString,$path_last);
+        //V2ray nativo
+        $vmessWSS = json_encode([ "v" => "2", "ps" => $data['domain_bug'].":443", "add" => $data['domain_bug'], "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => $path, "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
+        //Soporte a domain con protocol websocket via cloudflare or cloudfront
         $vmess = json_encode([ "v" => "2", "ps" => session('domain').":443", "add" => $data['domain_bug'], "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
         
         $rData = [
+            'vmess_wss' => base64_encode($vmessWSS),
             'vmess' => base64_encode($vmess),
             'uuid' => $uuid
         ];
@@ -116,8 +123,8 @@ class v2rayController extends Controller
         //Obtiene el saldo final de su cuenta
         $getSaldo = saldo::where('user_id',auth()->user()->id)->get()->sum('saldo');
         session(['saldoDisponible' => $getSaldo]);
-        //Create user a server ssh
-        $comand = "bash adduser.sh";
+        //Create user v2ray
+        $comand = "bash addV2rayClient.sh ".'hive-vpn.tk-'.session('user')." ".get_days();
     
         $stream = ssh2_exec(connect(session('host'),session('vps_user'),session('vps_passwd'),22), $comand);
         stream_set_blocking( $stream, true );
@@ -134,9 +141,16 @@ class v2rayController extends Controller
         $searchString = "\n";
         $replaceString = "";
         $uuid = str_replace($searchString,$replaceString,$genraUUID);
+        //path v2ray
+        $path_last = "wss://".session('domain')."/hive-vpn.tk/";
+        $path = str_replace($searchString,$replaceString,$path_last);
+        //V2ray nativo
+        $vmessWSS = json_encode([ "v" => "2", "ps" => session('domain').":443", "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => $path, "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
+        //Soporte a domain con protocol websocket via cloudflare or cloudfront
         $vmess = json_encode([ "v" => "2", "ps" => session('domain').":443", "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
         
         $rData = [
+            'vmess_wss' => base64_encode($vmessWSS),
             'vmess' => base64_encode($vmess),
             'uuid' => $uuid
         ];

@@ -14,7 +14,7 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">UUID: <b>{{ $rData['uuid'] }}</b></li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">v2ray port: <b>443</b></li>
                 </ul>
-                <b>VMESS</b>
+                <b>VMESS: Port 443 TLS/SSL</b>
                 <textarea id="ssClipboard" class="form-control mb-2" rows="8" style="font-size: 14px;">vmess://{{ $rData['vmess'] }}</textarea>
                 <button class="d-block btn btn-success btn-block rounded-pill" onclick="copyClipboard()">Copy</button>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
@@ -27,6 +27,21 @@
                        document.execCommand("copy");
                        alert("Copiado al portapapeles");
                       }
+                </script><br>
+
+                <b>Vmess: WSS 443</b>
+                <textarea id="v2ray_wss" class="form-control mb-2" rows="8" style="font-size: 14px;">vmess://{{ $rData['vmess_wss'] }}</textarea>
+                <button class="d-block btn btn-success btn-block rounded-pill" onclick="copyClipboard()">Copy</button>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+                <script src="https://sshocean.com/assets/js/jquery.qrcode.js" type="text/javascript"></script>
+                <script src="https://sshocean.com/assets/js/qrcode.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    function copyClipboard() {
+                    var copyText = document.getElementById("v2ray_wss");
+                    copyText.select();
+                    document.execCommand("copy");
+                    alert("Copiado al portapapeles");
+                    }
                 </script><br>
             </div>
         </div>
