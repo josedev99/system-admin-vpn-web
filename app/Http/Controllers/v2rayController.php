@@ -59,10 +59,12 @@ class v2rayController extends Controller
         $replaceString = "";
         $uuid = str_replace($searchString,$replaceString,$genraUUID);
         //path v2ray
-        $path_last = "wss://".session('domain')."/hive-vpn.tk/";
+        $path_last = "wss://".$data['domain_bug']."/hive-vpn.tk/";
         $path = str_replace($searchString,$replaceString,$path_last);
         //V2ray nativo
-        $vmessWSS = json_encode([ "v" => "2", "ps" => $data['domain_bug'].":443", "add" => $data['domain_bug'], "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => $path, "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
+        $vmessWSS = json_encode([ "v" => "2", "ps" => $data['domain_bug'],"sni" => $data['domain_bug'], "add" => $data['domain_bug'], "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => $path, "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
+
+
         //Soporte a domain con protocol websocket via cloudflare or cloudfront
         $vmess = json_encode([ "v" => "2", "ps" => session('domain').":443", "add" => $data['domain_bug'], "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
         
@@ -145,7 +147,7 @@ class v2rayController extends Controller
         $path_last = "wss://".session('domain')."/hive-vpn.tk/";
         $path = str_replace($searchString,$replaceString,$path_last);
         //V2ray nativo
-        $vmessWSS = json_encode([ "v" => "2", "ps" => session('domain').":443", "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => $path, "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
+        $vmessWSS = json_encode([ "v" => "2", "ps" => session('sni'),"sni" => session('sni'), "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => $path, "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
         //Soporte a domain con protocol websocket via cloudflare or cloudfront
         $vmess = json_encode([ "v" => "2", "ps" => session('domain').":443", "add" => session('sni'), "port" => 443, "aid" => 0, "type" => "", "net" => "ws", "path" => "/hive-vpn.tk/", "host" => session('domain'), "id" => $uuid, "tls" => "tls"]);
         
