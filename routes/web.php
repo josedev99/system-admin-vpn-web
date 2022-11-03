@@ -71,6 +71,9 @@ Route::post('/user/password/update','resetPasswordController@password_update')->
 Route::get('/recarga','SaldoController@index')->name('saldo.index')->middleware('auth');
 Route::post('/checkout', 'PaymentController@createPayment')->name('create-payment')->middleware('auth');
 Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment')->middleware('auth');
+
+
+Route::resource('/panel/saldo','SaldoController');
 /*TESTING VIEWMAIL*/
 
 /*
