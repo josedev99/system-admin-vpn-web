@@ -41,7 +41,7 @@
             </table>
         </div>
     </div>
-    {{-- {{$saldos->links()}} --}}
+    {{$saldos->links()}}
 </div>
     
 <script>
