@@ -1,6 +1,7 @@
 @extends('panel.layouts.app')
 @section('title','Saldos')
 @section('content')
+@include('panel.partials.alert')
 
 <div class="container">
     <div class="card">
@@ -9,18 +10,7 @@
         </div>
         <div class="card-body">
             <a class="btn btn-outline-info" href="{{ route('saldo.create') }}">Crear saldo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-            <form action="{{ route('saldo.index') }}" method="GET" class="d-none d-lg-inline-block form-inline ml-auto ml-md-0 my-4 my-md-4 mw-100 navbar-search">
-                <div class="input-group">
-                    <input type="text" class="form-control bg-light border-3 small" placeholder="busca el usuario..." aria-label="Search"
-                        aria-describedby="basic-addon2" name="texto" value="{{ $texto }}">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary" value="buscar">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <table class="table">
+            <table class="table table-striped table-bordered dataTable no-footer table-responsive-sm" id="table-saldo">
                 <thead>
                     <th class="text-center text-info">ID</th>
                     <th  class="text-center text-info">SALDO</th>
@@ -54,4 +44,8 @@
     {{$saldos->links()}}
 </div>
     
+<script>
+    //DataTables
+    var tableUser = new DataTable("#table-saldo");
+</script>
 @endsection

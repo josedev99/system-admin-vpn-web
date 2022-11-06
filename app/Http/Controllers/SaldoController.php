@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class SaldoController extends Controller
 {
     public function index(Request $request){
-        $texto = trim($request->get('texto'));
         $saldos = saldo::join('users','saldos.user_id','users.id')
         ->select(
             'saldos.id',
@@ -17,8 +16,8 @@ class SaldoController extends Controller
             'saldos.saldo',
             'saldos.created_at',
             'users.name as name',
-        )->where('name','LIKE', '%' .$texto. '%')->orderBy('id','DESC')->paginate(3);
-        return view('panel.saldo.index', compact('saldos','texto'));
+        )->orderBy('id','DESC')->paginate(10);
+        return view('panel.saldo.index', compact('saldos'));
     }
 
 
