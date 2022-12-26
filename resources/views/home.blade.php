@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 header__content">
                 
-                <h1 class="my-3 title-1">Obtener cuentas <span>SSH premium y gratis </span>, para accesos a VPN</h1>
-                <h3 class="mb-3 text-description">Conexión rápida y acceso a páginas bloqueadas.</h3>
-                <a href="{{ route('service.all') }}" class="btn btn-outline-info header__btn mt-3">COMENZAR!!</a>
+                <h1 class="my-3 title-1"><img src="https://img.icons8.com/color/48/null/individual-server.png"/> Obtener cuentas <span>SSH premium y gratis </span>, para accesos a VPN</h1>
+                <h3 class="mb-3 text-description"><img src="https://img.icons8.com/windows/32/null/slow-download.png"/>Conexión rápida y acceso a páginas bloqueadas.</h3>
+                <a href="{{ route('service.all') }}" class="btn btn-outline-info header__btn mt-3"><img src="https://img.icons8.com/material/24/null/server-linux.png"/> COMENZAR!!</a>
                 
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex justify-content-center header__img">
