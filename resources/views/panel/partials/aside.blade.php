@@ -35,7 +35,7 @@
           @if (Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3)
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Saldo</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
-              <li><a class="treeview-item" href="{{ route('saldo.index') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>
+              <li><a class="treeview-item" href="{{ route('addSaldo.index') }}"><i class="icon fa fa-circle-o"></i>Lista</a></li>
             </ul>
           </li>
           @endif

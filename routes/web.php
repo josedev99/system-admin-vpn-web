@@ -73,7 +73,14 @@ Route::post('/checkout', 'PaymentController@createPayment')->name('create-paymen
 Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment')->middleware('auth');
 
 
-Route::resource('/panel/saldo','SaldoController');
+//Route::resource('/panel/saldo','SaldoController');
+//Modulo para recargar saldo premium
+Route::get('/panel/saldo','SaldoController@addSaldo')->name('addSaldo.index')->middleware('auth');
+Route::get('/panel/saldo/recargar','SaldoController@create')->name('saldo.create')->middleware('auth');
+Route::post('/panel/saldo','SaldoController@store')->name('saldo.store')->middleware('auth');
+Route::get('/panel/saldo/{id}','SaldoController@edit')->name('saldo.edit')->middleware('auth');
+Route::put('/panel/saldo/{id}','SaldoController@update')->name('saldo.update')->middleware('auth');
+Route::delete('/panel/saldo/{id}','SaldoController@destroy')->name('saldo.destroy')->middleware('auth');
 /*TESTING VIEWMAIL*/
 
 /*

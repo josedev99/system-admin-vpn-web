@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 
 class SaldoController extends Controller
 {
-    public function index(Request $request){
+    public function __construct()
+    {
+        $this->middleware(['auth','roles:1,3'])->except('index');
+    }
+    public function index(){
+        return view('saldo.index');
+    }
+    public function addSaldo(Request $request){
         $saldos = saldo::join('users','saldos.user_id','users.id')
         ->select(
             'saldos.id',
@@ -42,7 +49,7 @@ class SaldoController extends Controller
         $saldo->save();
 
         //redigirimos
-        return redirect()->route('saldo.index');
+        return redirect()->route('addSaldo.index');
     }
 
     public function  edit($id)
@@ -67,13 +74,13 @@ class SaldoController extends Controller
         $saldo->update($sal);
 
         //redirigimos 
-        return redirect()->route('saldo.index');
+        return redirect()->route('addSaldo.index');
 
     }
 
     public function destroy($id)
     {
         saldo::find($id)->delete();
-        return redirect()->route('saldo.index');
+        return redirect()->route('addSaldo.index');
     }
 }

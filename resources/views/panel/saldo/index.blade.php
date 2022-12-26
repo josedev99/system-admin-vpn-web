@@ -26,7 +26,7 @@
                             <td class="text-center">${{$saldo->saldo}}</td>
                             <td class="text-center">{{$saldo->name}}</td>
                             <td class="text-center">{{$saldo->created_at}}</td>
-                            <td class="text-center"><a href="{{ action('SaldoController@edit', $saldo->id) }}" class="btn btn-outline-dark"><i class="fa fa-pencil" aria-hidden="true"></i>Editar</a></td>
+                            <td class="text-center"><a href="{{ route('saldo.edit',$saldo) }}" class="btn btn-outline-dark"><i class="fa fa-pencil" aria-hidden="true"></i>Editar</a></td>
                             <td class="text-center">
                                 <form action="{{ action('SaldoController@destroy',$saldo->id) }}" method="POST" role="form">
                                 @csrf
