@@ -17,7 +17,7 @@ class AccountController extends Controller
         $data = request()->validate([
             'user' => "required",
             'passwd' => "required",
-            'g-recaptcha-response' => 'recaptcha'
+            //'g-recaptcha-response' => 'recaptcha'
         ]);
         //Validation data
         $validateUser = account::where('user','=','hive-vpn.tk-'.$data['user'])->get();
@@ -59,7 +59,7 @@ class AccountController extends Controller
         $data = request()->validate([
             'user' => "required",
             'passwd' => "required",
-            'g-recaptcha-response' => 'recaptcha'
+            //'g-recaptcha-response' => 'recaptcha'
         ]);
         //Validation data
         $validateUser = account::where('user','=',$data['user'])->get();

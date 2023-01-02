@@ -28,10 +28,7 @@
                         <input type="text" id="passwd" name="passwd" placeholder="Password" class="form-control rounded-pill @error('passwd') is-invalid @enderror" value="{{ old('passwd') }}">
                     </div>
                     
-                    <div class="recapcha mb-2">
-                        {!! htmlFormSnippet() !!}
-                        @error('g-recaptcha-response') <span class="text-danger">verificaión fallida</span> @enderror
-                    </div>
+                    
                     {{ session([
                         'price' => $server[0]->price,
                         'server_id' => request()->id,
