@@ -7,7 +7,7 @@
                 </a>
                 <p class="footer__text">Somos los mejores proveedores de cuentas SSH para tus VPN, con acceso a videojuegos y mucho más</p>
                 <div class="footer__redes d-flex justify-content-start align-items-center">
-                    <b class="mr-3 footer__text">Mi telegram personal:</b> <a href="https://t.me/noscriptsh"><i class="fa-brands fa-telegram fa-3x"></i></a>
+                    <b class="mr-3 footer__text">Mi telegram personal:</b> <a href="https://t.me/Al3xv1p"><i class="fa-brands fa-telegram fa-3x"></i></a>
                 </div>
                
             </div>

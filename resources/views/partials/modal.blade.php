@@ -20,7 +20,7 @@
                 </ul>
             </div>
             
-            <a class="btn btn-success btn-sm shadow-lg btn-block" href="https://hive-vpn.tk/services">¡¡Empieza ahora!!</a>
+            <a class="btn btn-success btn-sm shadow-lg btn-block" href="/services">¡¡Empieza ahora!!</a>
         </div>
         <div class="card-footer text-center">
             <h5>Métodos de pago: </h5>
