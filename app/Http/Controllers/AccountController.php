@@ -20,7 +20,7 @@ class AccountController extends Controller
             //'g-recaptcha-response' => 'recaptcha'
         ]);
         //Validation data
-        $validateUser = account::where('user','=','hive-vpn.tk-'.$data['user'])->get();
+        $validateUser = account::where('user','=','modvip-vps.tk-'.$data['user'])->get();
         if(count($validateUser) > 0){
             return redirect()->back()->with('status','El usuario ya existe!');
         }
@@ -29,7 +29,7 @@ class AccountController extends Controller
         $fecha_actual = date("Y-m-d");   
         
         $resp = account::create([
-            'user' => 'hive-vpn.tk-'.$data['user'],
+            'user' => 'modvip-vps.tk-'.$data['user'],
             'passwd' => $data['passwd'],
             'sni' => '',
             'created' => $fecha_actual,
