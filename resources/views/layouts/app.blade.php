@@ -23,7 +23,7 @@
 <body>
     <!------ICON TELEGRAM FLOAT----->
     <div class="telegram">
-        <a target="_blank" href="https://t.me/Al3xv1p"><img src="{{ asset('images/telegram.svg') }}" width="65" alt=""></a>
+        <a target="_blank" href="https://t.me/+Mg2mVoluJ_0xMTlh"><img src="{{ asset('images/telegram.svg') }}" width="65" alt=""></a>
     </div>
     <div id="app">
         @include('partials.navbar')
