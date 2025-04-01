@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-4 mb-4">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/icons/logo.svg') }}" height="25" alt="">
+                    <img src="{{ asset('images/icons/logo.jpeg') }}" height="25" alt="">
                 </a>
                 <p class="footer__text">Somos los mejores proveedores de cuentas SSH para tus VPN, con acceso a videojuegos y mucho más</p>
                 <div class="footer__redes d-flex justify-content-start align-items-center">
