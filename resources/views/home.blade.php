@@ -3,7 +3,7 @@
 <!---MODAL---->
 @include('partials.modal')
 
-@section('title','hive vpn')
+@section('title','HIRVIP VPN')
 @section('content')
 <div class="header__section d-flex justify-content-center align-items-center flex-column">
     <div class="container">

@@ -7,7 +7,7 @@
                 </a>
                 <p class="footer__text">Somos los mejores proveedores de cuentas SSH para tus VPN, con acceso a videojuegos y mucho más</p>
                 <div class="footer__redes d-flex justify-content-start align-items-center">
-                    <b class="mr-3 footer__text">Mi telegram personal:</b> <a href="https://t.me/noscriptsh"><i class="fa-brands fa-telegram fa-3x"></i></a>
+                    <b class="mr-3 footer__text">Mi telegram personal:</b> <a href="#"><i class="fa-brands fa-telegram fa-3x"></i></a>
                 </div>
                
             </div>
@@ -27,6 +27,6 @@
             </div>
         </div>
         <hr>
-        <h5 class="footer__bottom-dev">© 2022 All Rights Reserved - hive-vpn</h5>
+        <h5 class="footer__bottom-dev">© 2022 All Rights Reserved - hirvip vpn</h5>
     </div>
 </footer>
